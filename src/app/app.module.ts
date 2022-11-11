@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { NavbarFiltroComponent } from '../components/navbar/outros/navbar-filtro/navbar-filtro.component';
@@ -15,24 +16,25 @@ import { IndexComponent } from './index/index.component';
 import { EntrarComponent } from './usuario/entrar/entrar.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    IndexComponent,
-    EntrarComponent,
-    NavbarPadraoComponent,
-    NavbarFiltroComponent,
-    NavbarSmallComponent,
-    SvgLogoComponent,
-    SvgSetaUmComponent,
-    SvgLupaComponent,
-    SvgAjudaComponent,
-    BotaoComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        IndexComponent,
+        EntrarComponent,
+        NavbarPadraoComponent,
+        NavbarFiltroComponent,
+        NavbarSmallComponent,
+        SvgLogoComponent,
+        SvgSetaUmComponent,
+        SvgLupaComponent,
+        SvgAjudaComponent,
+        BotaoComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-entrar',
-  templateUrl: './entrar.component.html',
-  styleUrls: ['./entrar.component.scss']
+    selector: 'app-entrar',
+    templateUrl: './entrar.component.html',
+    styleUrls: ['./entrar.component.scss']
 })
 export class EntrarComponent implements OnInit {
 
-  constructor() { }
+    nomeUsuario?: string = '';
+    senha?: string = '';
 
-  ngOnInit(): void {
-  }
+    handleEntrar(){
+        alert('aea');
+    }
+
+    constructor() { }
+
+    ngOnInit(): void {
+    }
 
 }
