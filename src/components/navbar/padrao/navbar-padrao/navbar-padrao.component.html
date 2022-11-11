@@ -1,0 +1,60 @@
+<!-- <nav>
+    <a routerLink="{{urlIndex}}">Home</a>
+    <span> - </span>
+    <a routerLink="{{urlEntrar}}">Entrar</a>
+</nav> -->
+
+<nav class="navbar">
+    <div class="wrapper">
+        <div class="divEsquerda">
+            <!-- <Link href="/"><a title={`Voltar ao início do ${CONSTS_SISTEMA.NOME_SISTEMA}`} onClick={() => simularLoading()}><Logo width="2rem" /></a></Link> -->
+
+            <a routerLink="{{urlIndex}}">GeekSpot</a>
+            <app-navbar-filtro></app-navbar-filtro>
+        </div>
+
+        <div class="divDireita">
+            <!-- <MenuProdutos efeitoBottomCSS={Styles.efeitoBottom} /> -->
+
+            <!-- <Link href="/xxx"><a class={Styles.efeitoBottom}>Promoções</a></Link> -->
+            <span class="separador"></span>
+
+            <!-- <Ajuda width={24} url={CONSTS_TELAS.AJUDA} title="Acessar página de ajuda" isCorPrincipal={false} /> -->
+
+            <!-- {
+                isAuth && (
+                    <Fragment>
+                        <Inbox width={24} url="/xxx" title="Acessar inbox para visualizar suas mensagens" isCorPrincipal={false} />
+                    </Fragment>
+                )
+            }
+
+            {
+                isAuth && (
+                    <NavbarPadraoMenuUsuario
+                        isExibirMenuUsuario={isExibirMenuUsuario}
+                        setIsExibirMenuUsuario={setIsExibirMenuUsuario}
+                        debounceFecharMenuUsuario={debounceFecharMenuUsuario}
+                    />
+                )
+            }
+
+            {
+                isAuth ? (
+                    <Fragment>
+                        <span class="separador"></span>
+
+                        <div onClick={() => deslogar(setIsAuth)}>
+                            <Botao texto="Sair" url={null} isNovaAba={false} handleFuncao={() => null} Svg={null} refBtn={null} isEnabled={true} />
+                        </div>
+                    </Fragment>
+                ) : (
+                    <Fragment>
+                        <span class="separador"></span>
+                        <Botao texto="Entrar agora mesmo" url="/usuario/entrar" isNovaAba={false} handleFuncao={() => null} Svg={null} refBtn={null} isEnabled={true} />
+                    </Fragment>
+                )
+            } -->
+        </div>
+    </div>
+</nav>
