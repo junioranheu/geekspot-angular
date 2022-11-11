@@ -10,6 +10,7 @@ export class NavbarPadraoComponent implements OnInit {
 
   urlIndex = CONSTS_TELAS.INDEX;
   urlEntrar = CONSTS_TELAS.ENTRAR;
+  urlAjuda = CONSTS_TELAS.AJUDA;
 
   constructor() { }
 

@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NavbarFiltroComponent } from '../components/navbar/outros/navbar-filtro/navbar-filtro.component';
 import { NavbarSmallComponent } from '../components/navbar/outros/navbar-small/navbar-small.component';
 import { NavbarPadraoComponent } from '../components/navbar/padrao/navbar-padrao/navbar-padrao.component';
+import { BotaoComponent } from '../components/outros/botao/botao.component';
+import { SvgAjudaComponent } from '../components/svg/svg-ajuda/svg-ajuda.component';
 import { SvgLogoComponent } from '../components/svg/svg-logo/svg-logo.component';
 import { SvgLupaComponent } from '../components/svg/svg-lupa/svg-lupa.component';
 import { SvgSetaUmComponent } from '../components/svg/svg-seta-um/svg-seta-um.component';
@@ -22,7 +24,9 @@ import { EntrarComponent } from './usuario/entrar/entrar.component';
     NavbarSmallComponent,
     SvgLogoComponent,
     SvgSetaUmComponent,
-    SvgLupaComponent
+    SvgLupaComponent,
+    SvgAjudaComponent,
+    BotaoComponent
   ],
   imports: [
     BrowserModule,

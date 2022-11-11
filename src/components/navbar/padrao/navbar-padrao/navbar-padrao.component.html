@@ -1,26 +1,20 @@
-<!-- <nav>
-    <a routerLink="{{urlIndex}}">Home</a>
-    <span> - </span>
-    <a routerLink="{{urlEntrar}}">Entrar</a>
-</nav> -->
-
 <nav class="navbar">
     <div class="wrapper">
         <div class="divEsquerda">
             <a routerLink="{{urlIndex}}">
                 <app-svg-logo></app-svg-logo>
             </a>
-            
+
             <app-navbar-filtro></app-navbar-filtro>
         </div>
 
         <div class="divDireita">
-            <!-- <MenuProdutos efeitoBottomCSS={Styles.efeitoBottom} /> -->
+            <a routerLink="/" class="efeitoBottom">Produtos</a>
+            <a routerLink="/" class="efeitoBottom">Produtos</a>
 
-            <!-- <Link href="/xxx"><a class={Styles.efeitoBottom}>Promoções</a></Link> -->
             <span class="separador"></span>
 
-            <!-- <Ajuda width={24} url={CONSTS_TELAS.AJUDA} title="Acessar página de ajuda" isCorPrincipal={false} /> -->
+            <app-svg-ajuda [url]="urlAjuda"></app-svg-ajuda>
 
             <!-- {
                 isAuth && (
@@ -56,6 +50,11 @@
                     </Fragment>
                 )
             } -->
+
+            <span class="separador"></span>
+
+            <app-botao [texto]="'Entrar'" [url]="urlEntrar" [isNovaAba]="false" [handleFuncao]="null"
+                [isEnabled]="true"></app-botao>
         </div>
     </div>
 </nav>

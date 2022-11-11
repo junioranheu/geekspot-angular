@@ -8,6 +8,7 @@ import { EntrarComponent } from './usuario/entrar/entrar.component';
 const routes: Routes = [
   { path: CONSTS_TELAS.INDEX, component: IndexComponent },
   { path: CONSTS_TELAS.ENTRAR, component: EntrarComponent },
+  { path: CONSTS_TELAS.AJUDA, component: EntrarComponent },
   { path: '**', redirectTo: '' }
 ];
 
