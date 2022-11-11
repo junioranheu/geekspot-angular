@@ -1,0 +1,64 @@
+.navbar {
+    background: var(--cor-principal-gradient);
+    color: var(--branco);
+
+    height: 2.8rem;
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        margin: 0 2px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #FFFFFF;
+    }
+
+    .saibaMais {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            margin-top: 2.5px;
+        }
+    }
+
+    .separadorEspecial {
+        display: inline-block;
+        vertical-align: middle;
+        width: 1px;
+        height: 1.5rem;
+        background: var(--cor-border-hr);
+        margin: 0 1rem;
+    }
+
+    .nomeSistema {
+        font-size: 14px;
+        font-weight: 600;
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
+@media (max-width:739px) {
+    .navbar {
+        height: 2rem;
+
+        span {
+            margin: 0 2px;
+            font-size: 10px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .saibaMais {
+            display: none;
+        }
+
+        .separadorEspecial {
+            display: none;
+        }
+    }
+}
