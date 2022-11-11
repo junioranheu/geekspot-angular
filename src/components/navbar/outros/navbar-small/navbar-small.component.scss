@@ -1,4 +1,4 @@
-.navbar {
+.navbarSmall {
     background: var(--cor-principal-gradient);
     color: var(--branco);
 
@@ -17,12 +17,14 @@
     }
 
     .saibaMais {
+        // background-color: red;
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 0.2rem;
 
-        svg {
-            margin-top: 2.5px;
+        app-svg-seta-um {
+            margin-top: 3.5px !important;
         }
     }
 
@@ -43,7 +45,7 @@
 
 /* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
 @media (max-width:739px) {
-    .navbar {
+    .navbarSmall {
         height: 2rem;
 
         span {
