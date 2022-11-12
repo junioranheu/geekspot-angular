@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-entrar',
@@ -7,14 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntrarComponent implements OnInit {
 
+    constructor(private toastr: ToastrService) { }
+
     nomeUsuario?: string = '';
     senha?: string = '';
 
-    handleEntrar(){
+    handleEntrar(): any {
+        if (!this.nomeUsuario) {
+            this.toastr.error('Parece que você esqueceu de inserir seu nome de usuário!', '');
+
+            return false;
+        }
+
+        alert(this.nomeUsuario);
+        alert(this.senha);
         alert('aea');
     }
-
-    constructor() { }
 
     ngOnInit(): void {
     }

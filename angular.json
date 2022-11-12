@@ -30,7 +30,8 @@
                         "styles": [
                             "src/styles.scss",
                             "src/assets/fonts/GTWalsheim/GTWalsheim.css",
-                            "src/assets/fonts/NanumPenScript/NanumPenScript.css"
+                            "src/assets/fonts/NanumPenScript/NanumPenScript.css",
+                            "node_modules/ngx-toastr/toastr.css"
                         ],
                         "scripts": []
                     },
@@ -100,7 +101,8 @@
                         "styles": [
                             "src/styles.scss",
                             "src/assets/fonts/GTWalsheim/GTWalsheim.css",
-                            "src/assets/fonts/NanumPenScript/NanumPenScript.css"
+                            "src/assets/fonts/NanumPenScript/NanumPenScript.css",
+                            "node_modules/ngx-toastr/toastr.css"
                         ],
                         "scripts": []
                     }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import CONSTS_TELAS from 'src/utils/consts/outros/telas';
 
+import CONSTS_TELAS from 'src/utils/consts/outros/telas';
 import { IndexComponent } from './index/index.component';
 import { EntrarComponent } from './usuario/entrar/entrar.component';
 

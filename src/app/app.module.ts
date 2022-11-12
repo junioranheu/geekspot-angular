@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr'; // https://www.npmjs.com/package/ngx-toastr
 
 import { NavbarFiltroComponent } from '../components/navbar/outros/navbar-filtro/navbar-filtro.component';
 import { NavbarSmallComponent } from '../components/navbar/outros/navbar-small/navbar-small.component';
@@ -32,7 +35,9 @@ import { EntrarComponent } from './usuario/entrar/entrar.component';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]

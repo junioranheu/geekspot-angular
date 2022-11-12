@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-botao',
@@ -14,7 +15,7 @@ export class BotaoComponent implements OnInit {
     @Input() handleFuncao: any | null;
     @Input() isEnabled: boolean = true;
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private toastr: ToastrService) { }
 
     abrirUrl(): any {
         const url = this.url;

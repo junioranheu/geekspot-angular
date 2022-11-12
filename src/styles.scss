@@ -13,16 +13,6 @@
     --cor-border-hr: rgba(42, 42, 42, 10%);
     --cor-principal-gradient: linear-gradient(to bottom right, var(--cor-principal), var(--cor-principal-escura));
     --border: 1px solid var(--cor-border-hr);
-
-    --toastify-color-progress-light: var(--cor-principal) !important;
-    --toastify-color-progress-warning: var(--cor-principal) !important;
-    --toastify-icon-color-warning: var(--cor-principal) !important;
-    --toastify-color-progress-error: var(--cor-principal) !important;
-    --toastify-icon-color-error: var(--cor-principal) !important;
-    --toastify-color-progress-success: var(--cor-principal) !important;
-    --toastify-icon-color-success: var(--cor-principal) !important;
-    --toastify-color-progress-info: var(--cor-principal) !important;
-    --toastify-icon-color-info: var(--cor-principal) !important;
 }
 
 html,
@@ -295,24 +285,6 @@ select {
     }
 }
 
-/* =-=-=-=-=-=-=-=-=-=-=-=- react-cookie-consent =-=-=-=-=-=-=-=-=-=-=-=- */
-.CookieConsent {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-
-    background-color: var(--super-preto) !important;
-    padding: 2rem !important;
-    color: var(--branco) !important;
-
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
 /* =-=-=-=-=-=-=-=-=-=-=-=- Input pesquisa =-=-=-=-=-=-=-=-=-=-=-=- */
 .inputFiltro {
     top: 0;
@@ -363,14 +335,10 @@ select {
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= Toast =-=-=-=-=-=-=-=-=-=-= */
-.Toastify__toast-container {
-    // background-color: red;
-    z-index: 99999999999;
-
-    .Toastify__toast-body {
-        b {
-            color: var(--cor-principal);
-        }
+#toast-container {
+    div {
+        background-color: var(--cor-principal-escura) !important;
+        box-shadow: var(--cor-principal) !important;
     }
 }
 
@@ -639,65 +607,6 @@ body::-webkit-scrollbar {
     button {
         &:hover {
             opacity: 1;
-        }
-    }
-}
-
-/* =-=-=-=-=-=-=-=-=-=-= Swiper =-=-=-=-=-=-=-=-=-=-= */
-.swiper {
-    // background-color: red !important;
-    width: 100vw;
-    display: flex;
-    text-align: center !important;
-
-    img {
-        // background-color: blue !important;
-        width: 100vw !important;
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-        color: var(--cor-principal) !important;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 600ms, visibility 600ms;
-    }
-
-    &:hover {
-        // background-color: red;
-
-        .swiper-button-next,
-        .swiper-button-prev {
-            visibility: visible;
-            opacity: 1;
-        }
-    }
-
-    .swiper-pagination {
-        .swiper-pagination-bullet-active {
-            background-color: var(--cor-principal) !important;
-        }
-    }
-}
-
-/* =-=-=-=-=-=-=-=-=-=-= Tooltip =-=-=-=-=-=-=-=-=-=-= */
-.__react_component_tooltip {
-    // background-color: pink !important;
-    z-index: 999999 !important;
-}
-
-/* =-=-=-=-=-=-=-=-=-=-= FlipClockCountdown =-=-=-=-=-=-=-=-=-=-= */
-// Esconder o "dia" do FlipClockCountdown;
-._qWTcH {
-    ._3cpN7 {
-        &:first-child {
-            display: none !important;
-        }
-    }
-
-    ._2hRXr {
-        &:nth-child(2) {
-            display: none !important;
         }
     }
 }
