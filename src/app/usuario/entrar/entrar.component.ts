@@ -16,7 +16,6 @@ export class EntrarComponent implements OnInit {
     handleEntrar(): any {
         if (!this.nomeUsuario) {
             this.toastr.error('Parece que você esqueceu de inserir seu nome de usuário!', '');
-
             return false;
         }
 

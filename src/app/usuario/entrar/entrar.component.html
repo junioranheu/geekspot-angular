@@ -1,8 +1,11 @@
-<p class="titulo">Login</p>
+<section class="animate__animated animate__fadeIn">
+    <p class="titulo">Login</p>
 
-<div class="divAsco">
-    <input class="input" type="text" placeholder="Nome de usuário" [(ngModel)]="nomeUsuario" />
-    <input class="input" type="password" placeholder="Senha" [(ngModel)]="senha" />
+    <div class="divAsco">
+        <input class="input" type="text" placeholder="Nome de usuário" [(ngModel)]="nomeUsuario" />
+        <input class="input" type="password" placeholder="Senha" [(ngModel)]="senha" />
 
-    <app-botao [texto]="'Entrar'" [url]="null" [isNovaAba]="false" [handleFuncao]="handleEntrar" [isEnabled]="true"></app-botao>
-</div>
+        <app-botao [texto]="'Entrar'" [url]="null" [isNovaAba]="false" [handleFuncao]="handleEntrar" [isEnabled]="true">
+        </app-botao>
+    </div>
+</section>
