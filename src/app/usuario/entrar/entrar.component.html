@@ -1,11 +1,66 @@
-<section class="animate__animated animate__fadeIn">
-    <p class="titulo">Login</p>
+<section class="flexEntrar animate__animated animate__fadeIn">
+    <section class="divPrincipal">
+        <span class="titulo">Bem-vindo ao GeekSpot</span>
 
-    <div class="divAsco">
-        <input class="input" type="text" placeholder="Nome de usuário" [(ngModel)]="nomeUsuario" />
-        <input class="input" type="password" placeholder="Senha" [(ngModel)]="senha" />
+        <div class="divLogin">
+            <ng-container *ngIf="isExibirDivEmail">
+                <div class="animate__animated animate__fadeIn">
+                    <input class="input" type="text" placeholder="E-mail ou nome de usuário" autoComplete="off"
+                        [(ngModel)]="nomeUsuario" />
 
-        <app-botao [texto]="'Entrar'" [url]="null" [isNovaAba]="false" [handleFuncao]="handleEntrar" [isEnabled]="true">
-        </app-botao>
-    </div>
+                    <input class="input margem0_5" type="password" placeholder="Senha" autoComplete="new-password"
+                        [(ngModel)]="senha" />
+
+                    <div class="botaoCustom margem0_5">
+                        <app-botao [texto]="'Entrar'" [url]="null" [isNovaAba]="false" [handleFuncao]="null"
+                            [isEnabled]="true">
+                        </app-botao>
+                    </div>
+
+                    <div class="divOpcoesFlex margem0_5">
+                        <span></span>
+
+                        <!-- <span class="cor-principal pointer"
+                        data-tip="Caso tenha se esquecido da sua senha, clica aqui que a gente dá um help! 🖖"
+                        onClick={()=> setIsModalEsqueciSenhaOpen(true)}
+                        >
+                        Esqueci minha senha
+                    </span> -->
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="!isExibirDivEmail">
+                <div class="botaoCustom">
+                    <app-botao [texto]="'Entrar com e-mail ou usuário'" [url]="null" [isNovaAba]="false"
+                        [handleFuncao]="handleExibirDivEmail()" [isEnabled]="true">
+                    </app-botao>
+                </div>
+            </ng-container>
+        </div>
+
+        <div>
+            <div class="divisao">ou</div>
+            <div class="botaoCustom2 margem1">
+                <app-botao [texto]="'Continuar com o Facebook'" [url]="null" [isNovaAba]="false" [handleFuncao]="null"
+                    [isEnabled]="true">
+                </app-botao>
+            </div>
+
+            <div class="botaoCustom2 margem0_5">
+                <app-botao [texto]="'Continuar com o Google'" [url]="null" [isNovaAba]="false" [handleFuncao]="null"
+                    [isEnabled]="true">
+                </app-botao>
+            </div>
+        </div>
+
+        <div>
+            <div class="divisao">ou, não tem uma conta ainda?</div>
+            <div class="botaoCustom2 margem1">
+                <app-botao [texto]="'Criar uma conta'" [url]="urlCriarConta" [isNovaAba]="false" [handleFuncao]="null"
+                    [isEnabled]="true">
+                </app-botao>
+            </div>
+        </div>
+    </section>
 </section>

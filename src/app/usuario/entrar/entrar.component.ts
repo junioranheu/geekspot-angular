@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import CONSTS_TELAS from 'src/utils/consts/outros/telas';
 
 @Component({
     selector: 'app-entrar',
@@ -9,6 +10,9 @@ import { ToastrService } from 'ngx-toastr';
 export class EntrarComponent implements OnInit {
 
     constructor(private toastr: ToastrService) { }
+
+    urlCriarConta = CONSTS_TELAS.CRIAR_CONTA;
+    isExibirDivEmail: boolean = false;
 
     nomeUsuario?: string = '';
     senha?: string = '';
@@ -22,6 +26,10 @@ export class EntrarComponent implements OnInit {
         alert(this.nomeUsuario);
         alert(this.senha);
         alert('aea');
+    }
+
+    handleExibirDivEmail(): void {
+        this.isExibirDivEmail = true;
     }
 
     ngOnInit(): void {
