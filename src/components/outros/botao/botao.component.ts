@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -12,7 +12,7 @@ export class BotaoComponent implements OnInit {
     @Input() texto: string = '';
     @Input() url?: string | null;
     @Input() isNovaAba: boolean = false;
-    @Input() handleFuncao: any | null;
+    @Output() handleFuncao: EventEmitter<any> = new EventEmitter(); // Como passar uma função por parâmetro "Input" (na verdade é Output): https://stackoverflow.com/a/45690614
     @Input() isEnabled: boolean = true;
 
     @Input() cor?: string | null;
@@ -20,12 +20,12 @@ export class BotaoComponent implements OnInit {
 
     constructor(private router: Router, private toastr: ToastrService) { }
 
-    abrirUrl(): any {
+    fnHandleFuncao(): void | boolean {
         const url = this.url;
 
         if (!url) {
             if (this.handleFuncao) {
-                this.handleFuncao();
+                this.handleFuncao.emit();
             }
 
             return false;

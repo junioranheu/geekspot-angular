@@ -12,7 +12,7 @@
                         [(ngModel)]="senha" />
 
                     <div class="margem0_5">
-                        <app-botao [texto]="'Entrar'" [url]="null" [isNovaAba]="false" [handleFuncao]="null"
+                        <app-botao [texto]="'Entrar'" [url]="null" [isNovaAba]="false" (handleFuncao)="handleEntrar()"
                             [isEnabled]="true" [cor]="null" [corFonte]="null">
                         </app-botao>
                     </div>
@@ -30,7 +30,7 @@
             <ng-container *ngIf="!isExibirDivEmail">
                 <div>
                     <app-botao [texto]="'Entrar com e-mail ou usuário'" [url]="null" [isNovaAba]="false"
-                        [handleFuncao]="handleExibirDivEmail()" [isEnabled]="true" [cor]="null" [corFonte]="null">
+                        (handleFuncao)="handleExibirDivEmail()" [isEnabled]="true" [cor]="null" [corFonte]="null">
                     </app-botao>
                 </div>
             </ng-container>
@@ -39,13 +39,13 @@
                 <div class="divisao">ou</div>
                 <div class="margem1">
                     <app-botao [texto]="'Continuar com o Facebook'" [url]="null" [isNovaAba]="false"
-                        [handleFuncao]="null" [isEnabled]="true" [cor]="'var(--cor-principal-opaca)'"
+                        (handleFuncao)="null" [isEnabled]="true" [cor]="'var(--cor-principal-opaca)'"
                         [corFonte]="'var(--preto)'">
                     </app-botao>
                 </div>
 
                 <div class="margem0_5">
-                    <app-botao [texto]="'Continuar com o Google'" [url]="null" [isNovaAba]="false" [handleFuncao]="null"
+                    <app-botao [texto]="'Continuar com o Google'" [url]="null" [isNovaAba]="false" (handleFuncao)="null"
                         [isEnabled]="true" [cor]="'var(--cor-principal-opaca)'" [corFonte]="'var(--preto)'">
                     </app-botao>
                 </div>
@@ -55,7 +55,7 @@
                 <div class="divisao">ou, não tem uma conta ainda?</div>
                 <div class="margem1">
                     <app-botao [texto]="'Criar uma conta'" [url]="urlCriarConta" [isNovaAba]="false"
-                        [handleFuncao]="null" [isEnabled]="true" [cor]="'var(--cor-principal-opaca)'"
+                        (handleFuncao)="null" [isEnabled]="true" [cor]="'var(--cor-principal-opaca)'"
                         [corFonte]="'var(--preto)'">
                     </app-botao>
                 </div>

@@ -14,17 +14,15 @@ export class EntrarComponent implements OnInit {
     urlCriarConta = CONSTS_TELAS.CRIAR_CONTA;
     isExibirDivEmail: boolean = false;
 
-    nomeUsuario?: string = '';
-    senha?: string = '';
+    public nomeUsuario?: string = '';
+    public senha?: string = '';
 
-    handleEntrar(): any {
-        if (!this.nomeUsuario) {
-            this.toastr.error('Parece que você esqueceu de inserir seu nome de usuário!', '');
+    handleEntrar(): void | boolean {
+        if (!this.nomeUsuario || !this.senha) {
+            this.toastr.error('O nome de usuário e/ou e-mail estão vazios!', '');
             return false;
         }
 
-        alert(this.nomeUsuario);
-        alert(this.senha);
         alert('aea');
     }
 
