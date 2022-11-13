@@ -3,18 +3,18 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import iUsuario from 'src/utils/interfaces/usuario';
+import { Fetch } from './fetch';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UsuarioService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private fetch: Fetch) { }
 
     async getUsuario(id: number): Promise<Observable<iUsuario> | null> {
         const url = `https://geekspotapi.azurewebsites.net/api/Usuarios/${id}`;
-        const response = await this.http.get(url, { observe: 'response' }).toPromise();
-        const usuario = response?.body as iUsuario;
+        const usuario = await this.fetch.getApi(url) as iUsuario;
         console.log(usuario);
 
         if (usuario) {

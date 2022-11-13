@@ -15,8 +15,8 @@ export class EntrarComponent implements OnInit {
     urlCriarConta = CONSTS_TELAS.CRIAR_CONTA;
     isExibirDivEmail: boolean = false;
 
-    public nomeUsuario?: string = '';
-    public senha?: string = '';
+    nomeUsuario?: string = '';
+    senha?: string = '';
 
     handleEntrar(): void | boolean {
         if (!this.nomeUsuario || !this.senha) {
