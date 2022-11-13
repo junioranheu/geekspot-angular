@@ -24,6 +24,7 @@ export class EntrarComponent implements OnInit {
         }
 
         alert('aea');
+        // https://github.com/junioranheu/geek-spot/blob/main/front-end/pages/usuario/entrar/sessaoEntrar.tsx
     }
 
     handleExibirDivEmail(): void {
