@@ -15,6 +15,9 @@ export class BotaoComponent implements OnInit {
     @Input() handleFuncao: any | null;
     @Input() isEnabled: boolean = true;
 
+    @Input() cor?: string | null;
+    @Input() corFonte?: string | null;
+
     constructor(private router: Router, private toastr: ToastrService) { }
 
     abrirUrl(): any {

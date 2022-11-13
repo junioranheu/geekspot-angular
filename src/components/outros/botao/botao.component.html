@@ -1,1 +1,4 @@
-<button class='botao' (click)="abrirUrl()">{{texto}}</button>
+<button class='botao' (click)="abrirUrl()"
+    [ngStyle]="{'background': cor ? cor : 'var(--cor-principal-gradient)', 'color': corFonte ? corFonte : 'var(--branco)'}">
+    {{texto}}
+</button>

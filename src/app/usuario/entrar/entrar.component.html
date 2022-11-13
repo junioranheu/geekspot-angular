@@ -11,55 +11,54 @@
                     <input class="input margem0_5" type="password" placeholder="Senha" autoComplete="new-password"
                         [(ngModel)]="senha" />
 
-                    <div class="botaoCustom margem0_5">
+                    <div class="margem0_5">
                         <app-botao [texto]="'Entrar'" [url]="null" [isNovaAba]="false" [handleFuncao]="null"
-                            [isEnabled]="true">
+                            [isEnabled]="true" [cor]="null" [corFonte]="null">
                         </app-botao>
                     </div>
 
                     <div class="divOpcoesFlex margem0_5">
                         <span></span>
 
-                        <!-- <span class="cor-principal pointer"
-                        data-tip="Caso tenha se esquecido da sua senha, clica aqui que a gente dá um help! 🖖"
-                        onClick={()=> setIsModalEsqueciSenhaOpen(true)}
-                        >
-                        Esqueci minha senha
-                    </span> -->
+                        <span class="cor-principal pointer">
+                            Esqueci minha senha
+                        </span>
                     </div>
                 </div>
             </ng-container>
 
             <ng-container *ngIf="!isExibirDivEmail">
-                <div class="botaoCustom">
+                <div>
                     <app-botao [texto]="'Entrar com e-mail ou usuário'" [url]="null" [isNovaAba]="false"
-                        [handleFuncao]="handleExibirDivEmail()" [isEnabled]="true">
+                        [handleFuncao]="handleExibirDivEmail()" [isEnabled]="true" [cor]="null" [corFonte]="null">
                     </app-botao>
                 </div>
             </ng-container>
-        </div>
 
-        <div>
-            <div class="divisao">ou</div>
-            <div class="botaoCustom2 margem1">
-                <app-botao [texto]="'Continuar com o Facebook'" [url]="null" [isNovaAba]="false" [handleFuncao]="null"
-                    [isEnabled]="true">
-                </app-botao>
+            <div class="margem1_5">
+                <div class="divisao">ou</div>
+                <div class="margem1">
+                    <app-botao [texto]="'Continuar com o Facebook'" [url]="null" [isNovaAba]="false"
+                        [handleFuncao]="null" [isEnabled]="true" [cor]="'var(--cor-principal-opaca)'"
+                        [corFonte]="'var(--preto)'">
+                    </app-botao>
+                </div>
+
+                <div class="margem0_5">
+                    <app-botao [texto]="'Continuar com o Google'" [url]="null" [isNovaAba]="false" [handleFuncao]="null"
+                        [isEnabled]="true" [cor]="'var(--cor-principal-opaca)'" [corFonte]="'var(--preto)'">
+                    </app-botao>
+                </div>
             </div>
 
-            <div class="botaoCustom2 margem0_5">
-                <app-botao [texto]="'Continuar com o Google'" [url]="null" [isNovaAba]="false" [handleFuncao]="null"
-                    [isEnabled]="true">
-                </app-botao>
-            </div>
-        </div>
-
-        <div>
-            <div class="divisao">ou, não tem uma conta ainda?</div>
-            <div class="botaoCustom2 margem1">
-                <app-botao [texto]="'Criar uma conta'" [url]="urlCriarConta" [isNovaAba]="false" [handleFuncao]="null"
-                    [isEnabled]="true">
-                </app-botao>
+            <div class="margem1_5">
+                <div class="divisao">ou, não tem uma conta ainda?</div>
+                <div class="margem1">
+                    <app-botao [texto]="'Criar uma conta'" [url]="urlCriarConta" [isNovaAba]="false"
+                        [handleFuncao]="null" [isEnabled]="true" [cor]="'var(--cor-principal-opaca)'"
+                        [corFonte]="'var(--preto)'">
+                    </app-botao>
+                </div>
             </div>
         </div>
     </section>
