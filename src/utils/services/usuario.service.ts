@@ -11,19 +11,14 @@ export class UsuarioService {
 
     constructor(private http: HttpClient) { }
 
-    getUsuario(id: number): Observable<iUsuario> | null {
-        let usuario;
+    async getUsuario(id: number): Promise<Observable<iUsuario> | null> {
         const url = `https://geekspotapi.azurewebsites.net/api/Usuarios/${id}`;
-        console.log(url);
-
-        this.http.get(url).subscribe(
-            data => [console.log(data), usuario = data]
-        );
-
+        const response = await this.http.get(url, { observe: 'response' }).toPromise();
+        const usuario = response?.body as iUsuario;
         console.log(usuario);
 
         if (usuario) {
-            return of(usuario as iUsuario);
+            return of(usuario);
         }
 
         return null;
