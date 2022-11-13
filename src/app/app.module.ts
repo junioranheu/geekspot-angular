@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -37,7 +38,8 @@ import { EntrarComponent } from './usuario/entrar/entrar.component';
         AppRoutingModule,
         FormsModule,
         BrowserAnimationsModule,
-        ToastrModule.forRoot()
+        ToastrModule.forRoot(),
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]

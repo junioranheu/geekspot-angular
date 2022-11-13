@@ -1,0 +1,6 @@
+Novo projeto:           ng new nome-projeto
+Executar a aplicação:   ng serve --open
+Criar novo componente:  ng generate component nome-componente
+Criar novo serviço:     ng generate service hero    (https://angular.io/tutorial/toh-pt4)
+Serviço assíncrono:     Observable  (https://angular.io/tutorial/toh-pt4#observable-data)
+Rotas:                  (https://angular.io/tutorial/toh-pt5)
