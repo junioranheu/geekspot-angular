@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 
 import iUsuario from 'src/utils/interfaces/usuario';
 import { Fetch } from '../consts/api/fetch';
@@ -12,7 +11,7 @@ export class AutenticarService {
 
     constructor(private fetch: Fetch) { }
 
-    async postLogin(usuario: string, senha: string): Promise<Observable<iUsuario> | null> {
+    async postLogin(usuario: string, senha: string): Promise<iUsuario | null> {
         const url = CONST_AUTENTICAR.API_URL_POST_LOGIN;
         const dto = {
             email: usuario,
@@ -23,7 +22,7 @@ export class AutenticarService {
         const resposta = await this.fetch.postApi(url, dto) as iUsuario;
 
         if (resposta) {
-            return of(resposta);
+            return resposta;
         }
 
         return null;

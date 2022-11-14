@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import CONSTS_TELAS from 'src/utils/consts/outros/telas';
+import { Auth } from 'src/utils/context/usuarioContext';
+import iContextDadosUsuario from 'src/utils/interfaces/contextDadosUsuario';
 import iUsuario from 'src/utils/interfaces/usuario';
 import { AutenticarService } from 'src/utils/services/autenticar.service';
-import { UsuarioService } from 'src/utils/services/usuario.service';
 
 @Component({
     selector: 'app-entrar',
@@ -12,7 +14,7 @@ import { UsuarioService } from 'src/utils/services/usuario.service';
 })
 export class EntrarComponent implements OnInit {
 
-    constructor(private toastr: ToastrService, private autenticarService: AutenticarService, private usuarioService: UsuarioService) { }
+    constructor(private toastr: ToastrService, private autenticarService: AutenticarService, private router: Router) { }
 
     urlCriarConta = CONSTS_TELAS.CRIAR_CONTA;
     isExibirDivEmail: boolean = false;
@@ -30,17 +32,16 @@ export class EntrarComponent implements OnInit {
             return false;
         }
 
-        const aea = await this.usuarioService.getUsuario(1) as unknown as iUsuario;
-        console.log(aea);
-
         const resposta = await this.autenticarService.postLogin(this.nomeUsuario, this.senha) as unknown as iUsuario;
-        console.log(resposta);
-        // if (!resposta || resposta?.erro) {
-        //     setModalAvisoLoginDescricao((resposta?.mensagemErro ? `Parece que ${resposta?.mensagemErro.toLowerCase()}. Tente novamente mais tarde` : 'Algo deu errado! Provavelmente o usuário e/ou a senha estão errados'));
-        //     setIsModalAvisoLoginOpen(true);
-        //     instrucaoErro('', false);
-        //     return false;
-        // }
+        if (!resposta || resposta?.erro) {
+            this.toastr.error(resposta?.mensagemErro ?? 'Algo deu errado! Provavelmente o usuário e/ou a senha estão errados', '');
+            return false;
+        }
+
+        this.router.navigate([CONSTS_TELAS.INDEX]).then(() => {
+            resposta.cep = resposta?.usuariosInformacoes?.cep ?? '';
+            Auth.set(resposta as unknown as iContextDadosUsuario);
+        });
     }
 
     ngOnInit(): void {
