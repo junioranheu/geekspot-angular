@@ -16,14 +16,14 @@ export class NavbarPadraoComponent implements OnInit {
 
     constructor(private usuarioContext: UsuarioContext, private router: Router) { }
 
-    isAuth: boolean = false;
+    isAuth: boolean | undefined;
     ngOnInit(): void {
-        this.isAuth = this.usuarioContext.isAuth;
+        this.usuarioContext.isAuthObservable.subscribe(ia => this.isAuth = ia);
     }
 
     handleDeslogar(): void {
         this.router.navigate([CONSTS_TELAS.INDEX]).then(() => {
-            this.isAuth = false;
+            this.usuarioContext._behaviorIsAuth.next(false);
             Auth.delete();
         });
     }

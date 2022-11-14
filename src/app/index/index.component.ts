@@ -10,9 +10,9 @@ export class IndexComponent implements OnInit {
 
     constructor(private usuarioContext: UsuarioContext) { }
 
-    isAuth: boolean = false;
+    isAuth: boolean | undefined;
     ngOnInit(): void {
-        this.isAuth = this.usuarioContext.isAuth;
+        this.usuarioContext.isAuthObservable.subscribe(ia => this.isAuth = ia);
     }
 
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import CONSTS_TELAS from 'src/utils/consts/outros/telas';
-import { Auth } from 'src/utils/context/usuarioContext';
+import { Auth, UsuarioContext } from 'src/utils/context/usuarioContext';
 import iContextDadosUsuario from 'src/utils/interfaces/contextDadosUsuario';
 import iUsuario from 'src/utils/interfaces/usuario';
 import { AutenticarService } from 'src/utils/services/autenticar.service';
@@ -14,7 +14,12 @@ import { AutenticarService } from 'src/utils/services/autenticar.service';
 })
 export class EntrarComponent implements OnInit {
 
-    constructor(private toastr: ToastrService, private autenticarService: AutenticarService, private router: Router) { }
+    constructor(
+        private toastr: ToastrService,
+        private autenticarService: AutenticarService,
+        private router: Router,
+        private usuarioContext: UsuarioContext
+    ) { }
 
     urlCriarConta = CONSTS_TELAS.CRIAR_CONTA;
     isExibirDivEmail: boolean = false;
@@ -41,6 +46,7 @@ export class EntrarComponent implements OnInit {
         this.router.navigate([CONSTS_TELAS.INDEX]).then(() => {
             resposta.cep = resposta?.usuariosInformacoes?.cep ?? '';
             Auth.set(resposta as unknown as iContextDadosUsuario);
+            this.usuarioContext._behaviorIsAuth.next(true);
         });
     }
 

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import iContextDadosUsuario from '../interfaces/contextDadosUsuario';
 import horarioBrasilia from '../outros/horarioBrasilia';
 
@@ -66,5 +67,6 @@ export const Auth = {
 
 @Injectable()
 export class UsuarioContext {
-    public isAuth: boolean = Auth.get() ? true : false;
+    public _behaviorIsAuth: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(Auth.get() ? true : false); // https://stackoverflow.com/questions/47474743/ngif-not-updating-when-variable-changes
+    public isAuthObservable: Observable<boolean> = this._behaviorIsAuth.asObservable();
 }
