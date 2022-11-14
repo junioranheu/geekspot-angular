@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
@@ -21,14 +21,23 @@ export class Fetch {
         const token = Auth?.get()?.token ?? '';
         let respostaJson;
 
+        const headers = new HttpHeaders()
+            .set('Authorization', `Bearer ${token}`)
+            .set('Content-Type', 'application/json');
+
         try {
-            respostaJson = await firstValueFrom(this.http.get(url));
+            respostaJson = await firstValueFrom(this.http.get(url, { headers }));
         } catch (erro: any) {
             const e = {
                 'url': url,
                 'token': token,
                 'erro': erro.message,
                 'data': horarioBrasilia().format('YYYY-MM-DD HH:mm:ss')
+            }
+
+            console.log(e);
+            if (!environment.production) {
+                this.toastr.error('Houve uma falha na requisição ao servidor!', '');
             }
 
             // Se o usuário tem um token e foi erro 401, chame o end-point de refresh token;
@@ -57,13 +66,17 @@ export class Fetch {
         const token = Auth?.get()?.token ?? '';
         let respostaJson;
 
+        const headers = new HttpHeaders()
+            .set('Authorization', `Bearer ${token}`)
+            .set('Content-Type', 'application/json');
+
         try {
             if (verboHTTP === VERBOS_HTTP.POST) {
-                respostaJson = await firstValueFrom(this.http.post(url, JSON.stringify(body)));
+                respostaJson = await firstValueFrom(this.http.post(url, JSON.stringify(body), { headers }));
             } else if (verboHTTP === VERBOS_HTTP.PUT) {
-                respostaJson = await firstValueFrom(this.http.put(url, JSON.stringify(body)));
+                respostaJson = await firstValueFrom(this.http.put(url, JSON.stringify(body), { headers }));
             } else if (verboHTTP === VERBOS_HTTP.DELETE) {
-                respostaJson = await firstValueFrom(this.http.delete(url, body));
+                respostaJson = await firstValueFrom(this.http.delete(url, { headers }));
             }
         } catch (erro: any) {
             const e = {
@@ -74,8 +87,10 @@ export class Fetch {
                 'data': horarioBrasilia().format('YYYY-MM-DD HH:mm:ss')
             }
 
-            // console.table(e);
-            // Aviso.error('Houve uma falha na requisição ao servidor!', 5000);
+            console.table(e);
+            if (!environment.production) {
+                this.toastr.error('Houve uma falha na requisição ao servidor!', '');
+            }
 
             // Se o usuário tem um token e foi erro 401, chame o end-point de refresh token;
             respostaJson = await this.refreshToken(token, erro.message, verboHTTP, url, body, isTentarRefreshToken);
@@ -89,7 +104,7 @@ export class Fetch {
             const urlRefreshToken = CONSTS_AUTENTICAR.API_URL_POST_REFRESH_TOKEN;
             const dto = {
                 token: token,
-                 refreshToken: (Auth?.get()?.refreshToken ?? '')
+                refreshToken: (Auth?.get()?.refreshToken ?? '')
             };
 
             // Fazer requisição para o end-point de refresh token

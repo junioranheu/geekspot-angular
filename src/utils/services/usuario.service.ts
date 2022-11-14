@@ -15,7 +15,7 @@ export class UsuarioService {
     async getUsuario(id: number): Promise<Observable<iUsuario> | null> {
         const url = `${CONST_USUARIOS.API_URL_GET_BY_ID}/${id}`;
         const usuario = await this.fetch.getApi(url) as iUsuario;
-        console.log(usuario);
+        // console.log(usuario);
 
         if (usuario) {
             return of(usuario);
