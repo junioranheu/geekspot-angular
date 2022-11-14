@@ -32,29 +32,19 @@
                         debounceFecharMenuUsuario={debounceFecharMenuUsuario}
                     />
                 )
-            }
-
-            {
-                isAuth ? (
-                    <Fragment>
-                        <span class="separador"></span>
-
-                        <div onClick={() => deslogar(setIsAuth)}>
-                            <Botao texto="Sair" url={null} isNovaAba={false} handleFuncao={() => null} Svg={null} refBtn={null} isEnabled={true} />
-                        </div>
-                    </Fragment>
-                ) : (
-                    <Fragment>
-                        <span class="separador"></span>
-                        <Botao texto="Entrar agora mesmo" url="/usuario/entrar" isNovaAba={false} handleFuncao={() => null} Svg={null} refBtn={null} isEnabled={true} />
-                    </Fragment>
-                )
             } -->
 
             <span class="separador"></span>
 
-            <app-botao [texto]="'Entrar agora mesmo'" [url]="urlEntrar" [isNovaAba]="false" (handleFuncao)="null"
-                [isEnabled]="true"></app-botao>
+            <div *ngIf="isAuth">
+                <app-botao [texto]="'Sair'" [url]="null" [isNovaAba]="false" (handleFuncao)="handleDeslogar()" [isEnabled]="true">
+                </app-botao>
+            </div>
+
+            <div *ngIf="!isAuth">
+                <app-botao [texto]="'Entrar agora mesmo'" [url]="urlEntrar" [isNovaAba]="false" (handleFuncao)="null"
+                    [isEnabled]="true"></app-botao>
+            </div>
         </div>
     </div>
 </nav>

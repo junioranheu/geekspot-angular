@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import iContextDadosUsuario from '../interfaces/contextDadosUsuario';
 import horarioBrasilia from '../outros/horarioBrasilia';
 
@@ -61,4 +62,9 @@ export const Auth = {
         let parsedData = JSON.stringify(dadosUsuario);
         localStorage.setItem(_item, parsedData);
     }
+}
+
+@Injectable()
+export class UsuarioContext {
+    public isAuth: boolean = Auth.get() ? true : false;
 }

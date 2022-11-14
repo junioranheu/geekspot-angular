@@ -314,47 +314,13 @@ select {
     animation-delay: calc(1s*0.3);
 }
 
-/* =-=-=-=-=-=-=-=-=-=-= nProgress =-=-=-=-=-=-=-=-=-=-= */
-#nprogress {
-    .bar {
-        background: hsl(257, 74%, 39%) !important;
-        height: 3px !important;
-        box-shadow: none !important;
-    }
-
-    .peg {
-        box-shadow: 0 0 10px hsl(257, 74%, 39%), 0 0 5px hsl(257, 74%, 39%) !important;
-        box-shadow: none !important;
-        height: 3px !important;
-    }
-
-    .spinner-icon {
-        border-top-color: var(--verde) !important;
-        border-left-color: var(--verde) !important;
-    }
-}
-
 /* =-=-=-=-=-=-=-=-=-=-= Toast =-=-=-=-=-=-=-=-=-=-= */
 #toast-container {
     div {
-        background-color: var(--cor-principal-escura) !important;
-        box-shadow: var(--cor-principal) !important;
-    }
-}
-
-/* =-=-=-=-=-=-=-=-=-=-= react-medium-image-zoom =-=-=-=-=-=-=-=-=-=-= */
-dialog[aria-labelledby*=rmiz-modal-img] {
-    div[data-rmiz-modal-overlay=visible] {
-        background-color: var(--branco) !important;
-    }
-
-    button {
-        display: none !important;
-        background-color: var(--preto);
-
-        svg {
-            fill: var(--cor-principal)
-        }
+        background-color: var(--verde) !important;
+        box-shadow: var(--verde) !important;
+        color: var(--preto) !important;
+        font-weight: 600;
     }
 }
 
