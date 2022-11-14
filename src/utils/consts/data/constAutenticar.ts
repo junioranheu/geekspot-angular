@@ -1,5 +1,4 @@
-import { isDevMode } from '@angular/core';
-
+import { environment } from 'src/utils/environments/environment';
 import { API_BASE_URL_DEV, API_BASE_URL_PROD } from '../../consts/api/urlApi';
 
 const ENDPOINTS = {
@@ -21,6 +20,6 @@ const PROD = {
 };
 
 // Definir se as constantes para a API é DEV ou PROD;
-const CONSTS = isDevMode() ? DEV : PROD;
+const CONSTS = !environment.production ? DEV : PROD;
 
 export default CONSTS;
