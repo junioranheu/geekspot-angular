@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, isDevMode } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
 import { ToastrService } from 'ngx-toastr';
+import { Auth } from 'src/utils/context/usuarioContext';
+import { environment } from 'src/utils/environments/environment';
 import iContextDadosUsuario from 'src/utils/interfaces/contextDadosUsuario';
 import CONSTS_AUTENTICAR from '../../consts/data/constAutenticar';
 import horarioBrasilia from '../../outros/horarioBrasilia';
@@ -16,8 +18,7 @@ export class Fetch {
     constructor(private http: HttpClient, private toastr: ToastrService) { }
 
     public async getApi(url: string, isTentarRefreshToken: boolean = true) {
-        // const token = Auth?.get()?.token ?? '';
-        const token = 'xxx';
+        const token = Auth?.get()?.token ?? '';
         let respostaJson;
 
         try {
@@ -53,8 +54,7 @@ export class Fetch {
     }
 
     public async conteudoPostPutDelete(verboHTTP: string, url: string, body: string | any | null, isTentarRefreshToken: boolean = true) {
-        // const token = Auth?.get()?.token ?? '';
-        const token = 'xxx';
+        const token = Auth?.get()?.token ?? '';
         let respostaJson;
 
         try {
@@ -89,8 +89,7 @@ export class Fetch {
             const urlRefreshToken = CONSTS_AUTENTICAR.API_URL_POST_REFRESH_TOKEN;
             const dto = {
                 token: token,
-                // refreshToken: (Auth?.get()?.refreshToken ?? '')
-                refreshToken: 'xxx'
+                 refreshToken: (Auth?.get()?.refreshToken ?? '')
             };
 
             // Fazer requisição para o end-point de refresh token
@@ -107,12 +106,12 @@ export class Fetch {
                 refreshToken: respostaRefreshToken.refreshToken
             } as iContextDadosUsuario;
 
-            // Auth.update(dadosUsuario);
+            Auth.update(dadosUsuario);
 
             const msgRefreshTokenAtualizado = 'Refresh token atualizado';
             console.log(msgRefreshTokenAtualizado);
 
-            if (isDevMode()) {
+            if (!environment.production) {
                 this.toastr.success(msgRefreshTokenAtualizado, '');
             }
 
