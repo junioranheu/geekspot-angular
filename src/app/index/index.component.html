@@ -4,9 +4,11 @@
     <span class="texto">{{this.isAuth ? "Você está logado" : "Você NÃO está logado"}}</span>
 
     <hr />
-    <div *ngFor="let item of listaItens; let i = index">
-        <div *ngFor="let itemInterno of item">
-            {{itemInterno.nome}}
+    <drag-scroll style="width: 50%; height: fit-content;">
+        <div *ngFor="let item of listaItens; let i = index" class="teste">
+            <div *ngFor="let itemInterno of item">
+                {{itemInterno.nome}}
+            </div>
         </div>
-    </div>
+    </drag-scroll>
 </section>
