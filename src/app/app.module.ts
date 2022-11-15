@@ -26,6 +26,7 @@ import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { CriarContaComponent } from './usuario/criar-conta/criar-conta.component';
 import { EntrarComponent } from './usuario/entrar/entrar.component';
+import { ErroComponent } from './erro/erro.component';
 
 @NgModule({
     declarations: [
@@ -42,7 +43,8 @@ import { EntrarComponent } from './usuario/entrar/entrar.component';
         BotaoComponent,
         ModuloAlternativoComponent,
         FooterComponent,
-        CriarContaComponent
+        CriarContaComponent,
+        ErroComponent
     ],
     imports: [
         BrowserModule,

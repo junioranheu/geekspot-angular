@@ -29,8 +29,16 @@ export class CriarContaComponent implements OnInit {
         private loadingBar: LoadingBarService
     ) { }
 
+    isAuth: boolean | undefined;
     imagemPerfilRandomInicialBase6?: string;
     ngOnInit(): void {
+        this.usuarioContext.isAuthObservable.subscribe(ia => this.isAuth = ia);
+
+        if (this.isAuth) {
+            this.router.navigate([CONSTS_TELAS.ERRO]);
+        }
+
+        // Gerar uma imagem pro novo usuário;
         converterSrcImagemParaBase64(gerarImagemPerfilRandom())
             .then((base64: any) => {
                 // console.log(base64);

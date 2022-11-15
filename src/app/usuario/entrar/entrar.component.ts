@@ -24,7 +24,13 @@ export class EntrarComponent implements OnInit {
         private loadingBar: LoadingBarService
     ) { }
 
+    isAuth: boolean | undefined;
     ngOnInit(): void {
+        this.usuarioContext.isAuthObservable.subscribe(ia => this.isAuth = ia);
+
+        if (this.isAuth) {
+            this.router.navigate([CONSTS_TELAS.ERRO]);
+        }
     }
 
     urlCriarConta = CONSTS_TELAS.CRIAR_CONTA;
