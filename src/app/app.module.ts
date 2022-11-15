@@ -10,6 +10,7 @@ import { ToastrModule } from 'ngx-toastr'; // https://www.npmjs.com/package/ngx-
 
 import { UsuarioContext } from 'src/utils/context/usuarioContext';
 
+import { FooterComponent } from '../components/footer/padrao/footer/footer.component';
 import { ModuloAlternativoComponent } from '../components/modulo/modulo-alternativo/modulo-alternativo.component';
 import { NavbarFiltroComponent } from '../components/navbar/outros/navbar-filtro/navbar-filtro.component';
 import { NavbarSmallComponent } from '../components/navbar/outros/navbar-small/navbar-small.component';
@@ -37,7 +38,8 @@ import { EntrarComponent } from './usuario/entrar/entrar.component';
         SvgLupaComponent,
         SvgAjudaComponent,
         BotaoComponent,
-        ModuloAlternativoComponent
+        ModuloAlternativoComponent,
+        FooterComponent
     ],
     imports: [
         BrowserModule,
