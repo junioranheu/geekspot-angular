@@ -1,9 +1,26 @@
-<div *ngFor="let item of listaItens; let i = index" class="teste">
-    <h1>Lojinha do {{item[0]?.usuarios?.nomeUsuarioSistema}}</h1>
+<div *ngFor="let item of listaItens; let i = index" class="flexColumn">
+    <div class="flexRow">
+        <div class="flexColumn">
+            <b class="titulo cor-principal-hover pointer">
+                {{(item[0]?.usuarios?.usuariosInformacoes?.lojinhaTitulo ?? "Itens do usuário @{{item[0]?.usuarios?.nomeUsuarioSistema}}")}}
+            </b>
 
-    <drag-scroll style="width: 50%; height: fit-content;">
-        <div *ngFor="let itemInterno of item">
-            {{itemInterno.nome}}
+            <span class="texto">{{item[0]?.usuarios?.usuariosInformacoes?.lojinhaDescricao}}</span>
+        </div>
+
+        <div class="infoDireita cor-principal-hover">
+            Ver mais
+            <app-svg-seta-um></app-svg-seta-um>
+        </div>
+    </div>
+
+    <drag-scroll style="width: 100%; height: fit-content;">
+        <div class="container margem1">
+            <div *ngFor="let itemInterno of item" class="wrapImagem">
+                <span class="cor-principal-hover pointer">
+                    {{itemInterno.nome}}
+                </span>
+            </div>
         </div>
     </drag-scroll>
 </div>

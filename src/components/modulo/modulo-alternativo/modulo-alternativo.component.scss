@@ -1,0 +1,97 @@
+.infoDireita {
+    // background-color: red !important; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: auto;
+    cursor: pointer;
+    color: var(--preto);
+    padding-top: 0.75rem;
+
+    app-svg-seta-um {
+        margin-top: 2px;
+    }
+}
+
+.container {
+    // background-color: pink;
+    display: flex;
+
+    img {
+        border-radius: 5px;
+        cursor: pointer;
+        filter: grayscale(30%);
+        /* filter: grayscale(100%) blur(0.5px); */
+        transition: 0.5s ease-in-out;
+
+        &:hover {
+            // filter: grayscale(0%) blur(0px) contrast(110%);
+            // transform: scale(1.01);
+            filter: grayscale(0%) blur(0px) contrast(101%);
+            transition: 0.5s ease-in-out;
+        }
+    }
+
+    .wrapImagem {
+        // background-color: red;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+
+        height: 100%;
+        border-bottom: var(--border);
+        border-top: var(--border);
+        border-right: var(--border);
+        padding: 1.8rem;
+
+        &:first-child {
+            // background-color: red;
+            border-left: var(--border);
+            border-start-start-radius: 5px;
+            border-end-start-radius: 5px;
+        }
+
+        &:last-child {
+            // background-color: red;
+            border-right: var(--border);
+            border-start-end-radius: 5px;
+            border-end-end-radius: 5px;
+        }
+
+        span {
+            // background-color: red;
+            color: var(--preto);
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding-top: 2rem;
+            min-width: 14rem;
+            max-width: 14rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {}
+
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:801px) {
+    .container {
+        // background-color: pink !important;
+        margin-top: 0.7rem !important;
+    }
+}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {}
+
+/* smartphones, Android phones, landscape iPhone */
+@media (max-width:480px) {}
