@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -34,8 +34,11 @@ export class EntrarComponent implements OnInit {
         this.isExibirDivEmail = true;
     }
 
+    @ViewChild('inputUsuario', { static: false }) inputUsuario: ElementRef | undefined;
     async handleEntrar(): Promise<boolean | void> {
         if (!this.nomeUsuario || !this.senha) {
+            this.senha = '';
+            this.inputUsuario?.nativeElement.focus();
             this.toastr.error('O nome de usuário e/ou e-mail estão vazios!', '');
             return false;
         }
@@ -44,6 +47,8 @@ export class EntrarComponent implements OnInit {
 
         const resposta = await this.autenticarService.postLogin(this.nomeUsuario, this.senha) as unknown as iUsuario;
         if (!resposta || resposta?.erro) {
+            this.senha = '';
+            this.inputUsuario?.nativeElement.focus();
             this.toastr.error(resposta?.mensagemErro ?? 'Algo deu errado! Provavelmente o usuário e/ou a senha estão errados', '');
             this.loadingBar.complete();
             return false;

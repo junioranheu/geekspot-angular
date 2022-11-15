@@ -6,10 +6,10 @@
             <ng-container *ngIf="isExibirDivEmail">
                 <div class="animate__animated animate__fadeIn">
                     <input class="input" type="text" placeholder="E-mail ou nome de usuário" autoComplete="off"
-                        [(ngModel)]="nomeUsuario" (keydown.enter)="handleEntrar()" />
+                        [(ngModel)]="nomeUsuario" (keydown.enter)="handleEntrar()" #inputUsuario />
 
                     <input class="input margem0_5" type="password" placeholder="Senha" autoComplete="new-password"
-                        [(ngModel)]="senha" (keydown.enter)="handleEntrar()" />
+                        [(ngModel)]="senha" (keydown.enter)="handleEntrar()" #inputSenha />
 
                     <div class="margem0_5">
                         <app-botao [texto]="'Entrar'" [url]="null" [isNovaAba]="false" (handleFuncao)="handleEntrar()"
