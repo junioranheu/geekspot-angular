@@ -1,0 +1,9 @@
+<div *ngFor="let item of listaItens; let i = index" class="teste">
+    <h1>Lojinha do {{item[0]?.usuarios?.nomeUsuarioSistema}}</h1>
+
+    <drag-scroll style="width: 50%; height: fit-content;">
+        <div *ngFor="let itemInterno of item">
+            {{itemInterno.nome}}
+        </div>
+    </drag-scroll>
+</div>

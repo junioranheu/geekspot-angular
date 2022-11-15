@@ -16,7 +16,7 @@ export default interface iItem {
             dataRegistro: Date;
         }
     ] | null;
-
+ 
     preco: number;
     precoDesconto: number | null;
 
