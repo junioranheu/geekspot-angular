@@ -67,9 +67,6 @@ export class CriarContaComponent implements OnInit {
             return false;
         }
 
-        console.log('OK');
-        return false;
-
         // Atribuir o nome formatado para a variavel nome, novamente;
         this.nomeCompleto = padronizarNomeCompletoUsuario(this.nomeCompleto ?? '');
 

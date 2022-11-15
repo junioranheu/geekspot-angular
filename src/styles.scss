@@ -323,6 +323,10 @@ select {
         font-weight: 600 !important;
         font-size: 0.9rem !important;
     }
+
+    b {
+        color: var(--cor-principal) !important;
+    }
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= Loading bar - @ngx-loading-bar/core =-=-=-=-=-=-=-=-=-=-= */

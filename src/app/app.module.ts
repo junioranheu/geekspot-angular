@@ -50,7 +50,7 @@ import { EntrarComponent } from './usuario/entrar/entrar.component';
         FormsModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        ToastrModule.forRoot(),
+        ToastrModule.forRoot({ enableHtml: true, positionClass: 'toast-top-right' }),
         LoadingBarModule,
         DragScrollModule,
         FontAwesomeModule
