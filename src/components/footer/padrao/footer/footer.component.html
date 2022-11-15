@@ -1,1 +1,83 @@
-<p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+<footer class="footer">
+    <div class="principal">
+        <div class="sessao">
+            <span class="tituloSessao">GeekSpot</span>
+
+            <a routerLink="/">Sobre</a>
+            <a routerLink="/">Blog</a>
+            <a routerLink="/">Facebook</a>
+            <a routerLink="/">Instagram</a>
+            <a routerLink="/">GeekSpot Pro<span class="efeito-new">Novo</span></a>
+            <a routerLink="/">Usuário</a>
+
+            <a *ngIf="isAuth" routerLink="/">Configurações</a>
+        </div>
+
+        <div class="sessao">
+            <span class="tituloSessao">Seja membro</span>
+
+            <a routerLink="/">Usuário</a>
+            <a routerLink="/">Loja</a>
+            <a routerLink="/">Investidor</a>
+        </div>
+
+        <div class="sessao">
+            <span class="tituloSessao">Plataformas</span>
+
+            <a routerLink="/">Web</a>
+            <a routerLink="/">iOS<span class="efeito-new">em breve</span></a>
+            <a routerLink="/">Android<span class="efeito-new">em breve</span></a>
+            <a routerLink="/">macOS</a>
+            <a routerLink="/">Windows</a>
+        </div>
+
+        <div class="sessao">
+            <span class="tituloSessao">Sobre</span>
+
+            <a routerLink="/">Termos de uso</a>
+            <a routerLink="/">Comunidade</a>
+            <a routerLink="/">Carreiras</a>
+        </div>
+
+        <div class="sessao">
+            <span class="tituloSessao">Suporte</span>
+
+            <a routerLink="/">Ajuda</a>
+            <a routerLink="/">Trocas</a>
+            <a routerLink="/">Compras</a>
+            <a routerLink="/">Vendas</a>
+            <a routerLink="/">Contato</a>
+        </div>
+    </div>
+
+    <div class="secundaria">
+        <div>
+            <span>
+                Copyright © {{dataAtual | date:'yyyy'}} — GeekSpot — Desenvolvido por
+
+                <a routerLink="https://github.com/junioranheu" target="_blank"
+                    class="cor-principal-hover">&nbsp;@junioranheu</a>
+            </span>
+        </div>
+
+        <!-- <div class="direita">
+            <div class="icones">
+                <span title={`${(isModoDark ? "Alternar para o modo light" : "Alternar para o modo dark" )}`">
+                    <FontAwesomeIcon class="pointer cor-principal-hover" icon={(isModoDark ? faSun : faMoon)} size="lg"
+                        onClick={()=> alterarModo(!isModoDark, setIsModoDark)} />
+                </span>
+
+                <span title="GitHub">
+                    <FontAwesomeIcon class="pointer cor-principal-hover" icon={faGithub} size="lg" onClick={()=> {
+                        window.open("https://github.com/junioranheu", "_blank") }} />
+                </span>
+
+                <span title="Instagram">
+                    {/* <FontAwesomeIcon class="pointer cor-principal-hover" icon={faInstagram} size="lg" onClick={()=>
+                        { window.open("https://www.instagram.com/junioranheu/", "_blank") }} /> */}
+                        <FontAwesomeIcon class="pointer cor-principal-hover" icon={faInstagram} size="lg" />
+                </span>
+            </div>
+        </div> -->
+    </div>
+</footer>
