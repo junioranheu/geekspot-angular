@@ -1,0 +1,66 @@
+<section class="flexEntrar animate__animated animate__fadeIn">
+    <section class="divPrincipal">
+        <span class="titulo">Crie sua conta no GeekSpot</span>
+
+        <div class="divLogin margem1">
+            <ng-container *ngIf="isExibirDivEmail">
+                <div class="animate__animated animate__fadeIn">
+                    <input class="input" type="text" placeholder="Nome completo" autoComplete="off"
+                        [(ngModel)]="nomeCompleto" (keydown.enter)="handleCriarConta()" #inputNomeCompleto />
+
+                    <input class="input margem0_5" type="text" placeholder="Seu melhor e-mail" autoComplete="off"
+                        [(ngModel)]="email" (keydown.enter)="handleCriarConta()" #inputEmail />
+
+                    <input class="input margem0_5" type="text" placeholder="Nome de usuário" autoComplete="off"
+                        [(ngModel)]="nomeUsuario" (keydown.enter)="handleCriarConta()" #inputUsuario />
+
+                    <input class="input margem0_5" type="password" placeholder="Senha" autoComplete="new-password"
+                        [(ngModel)]="senha" (keydown.enter)="handleCriarConta()" #inputSenha />
+
+                    <input class="input margem0_5" type="password" placeholder="Confirme sua senha"
+                        autoComplete="new-password" [(ngModel)]="confirmarSenha" (keydown.enter)="handleCriarConta()"
+                        #inputConfirmarSenha />
+
+                    <div class="margem0_5">
+                        <app-botao [texto]="'Criar conta'" [url]="null" [isNovaAba]="false"
+                            (handleFuncao)="handleCriarConta()" [isEnabled]="true" [cor]="null" [corFonte]="null">
+                        </app-botao>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="!isExibirDivEmail">
+                <div>
+                    <app-botao [texto]="'Criar conta com e-mail'" [url]="null" [isNovaAba]="false"
+                        (handleFuncao)="handleExibirDivEmail()" [isEnabled]="true" [cor]="null" [corFonte]="null">
+                    </app-botao>
+                </div>
+            </ng-container>
+
+            <div class="margem1_5">
+                <div class="divisao">ou</div>
+                <div class="margem1">
+                    <app-botao [texto]="'Continuar com o Facebook'" [url]="null" [isNovaAba]="false"
+                        (handleFuncao)="null" [isEnabled]="true" [cor]="'var(--cor-principal-opaca)'"
+                        [corFonte]="'var(--preto)'">
+                    </app-botao>
+                </div>
+
+                <div class="margem0_5">
+                    <app-botao [texto]="'Continuar com o Google'" [url]="null" [isNovaAba]="false" (handleFuncao)="null"
+                        [isEnabled]="true" [cor]="'var(--cor-principal-opaca)'" [corFonte]="'var(--preto)'">
+                    </app-botao>
+                </div>
+            </div>
+
+            <div class="margem1_5">
+                <div class="divisao">ou, já tem uma conta?</div>
+                <div class="margem1">
+                    <app-botao [texto]="'Entrar agora'" [url]="urlEntrar" [isNovaAba]="false" (handleFuncao)="null"
+                        [isEnabled]="true" [cor]="'var(--cor-principal-opaca)'" [corFonte]="'var(--preto)'">
+                    </app-botao>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

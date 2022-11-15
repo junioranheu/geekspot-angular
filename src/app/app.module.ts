@@ -24,6 +24,7 @@ import { SvgSetaUmComponent } from '../components/svg/svg-seta-um/svg-seta-um.co
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
+import { CriarContaComponent } from './usuario/criar-conta/criar-conta.component';
 import { EntrarComponent } from './usuario/entrar/entrar.component';
 
 @NgModule({
@@ -40,7 +41,8 @@ import { EntrarComponent } from './usuario/entrar/entrar.component';
         SvgAjudaComponent,
         BotaoComponent,
         ModuloAlternativoComponent,
-        FooterComponent
+        FooterComponent,
+        CriarContaComponent
     ],
     imports: [
         BrowserModule,

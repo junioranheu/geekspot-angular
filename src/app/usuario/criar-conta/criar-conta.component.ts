@@ -10,11 +10,11 @@ import iUsuario from 'src/utils/interfaces/usuario';
 import { AutenticarService } from 'src/utils/services/autenticar.service';
 
 @Component({
-    selector: 'app-entrar',
-    templateUrl: './entrar.component.html',
-    styleUrls: ['./entrar.component.scss']
+    selector: 'app-criar-conta',
+    templateUrl: './criar-conta.component.html',
+    styleUrls: ['../entrar/entrar.component.scss']
 })
-export class EntrarComponent implements OnInit {
+export class CriarContaComponent implements OnInit {
 
     constructor(
         private toastr: ToastrService,
@@ -27,18 +27,25 @@ export class EntrarComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    urlCriarConta = CONSTS_TELAS.CRIAR_CONTA;
+    urlEntrar = CONSTS_TELAS.ENTRAR;
     isExibirDivEmail: boolean = false;
 
+    nomeCompleto?: string = '';
+    email?: string = '';
     nomeUsuario?: string = '';
     senha?: string = '';
+    confirmarSenha?: string = '';
 
     handleExibirDivEmail(): void {
         this.isExibirDivEmail = true;
     }
 
+    @ViewChild('inputNomeCompleto', { static: false }) inputNomeCompleto: ElementRef | undefined;
+    @ViewChild('inputEmail', { static: false }) inputEmail: ElementRef | undefined;
     @ViewChild('inputUsuario', { static: false }) inputUsuario: ElementRef | undefined;
-    async handleEntrar(): Promise<boolean | void> {
+    @ViewChild('inputSenha', { static: false }) inputSenha: ElementRef | undefined;
+    @ViewChild('inputConfirmarSenha', { static: false }) inputConfirmarSenha: ElementRef | undefined;
+    async handleCriarConta(): Promise<boolean | void> {
         if (!this.nomeUsuario || !this.senha) {
             this.senha = '';
             this.inputUsuario?.nativeElement.focus();

@@ -3,17 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 import CONSTS_TELAS from 'src/utils/consts/outros/telas';
 import { IndexComponent } from './index/index.component';
+import { CriarContaComponent } from './usuario/criar-conta/criar-conta.component';
 import { EntrarComponent } from './usuario/entrar/entrar.component';
 
 const routes: Routes = [
-  { path: CONSTS_TELAS.INDEX, component: IndexComponent },
-  { path: CONSTS_TELAS.ENTRAR, component: EntrarComponent },
-  { path: CONSTS_TELAS.AJUDA, component: EntrarComponent },
-  { path: '**', redirectTo: '' }
+    { path: CONSTS_TELAS.INDEX, component: IndexComponent },
+    { path: CONSTS_TELAS.ENTRAR, component: EntrarComponent },
+    { path: CONSTS_TELAS.AJUDA, component: EntrarComponent },
+    { path: CONSTS_TELAS.CRIAR_CONTA, component: CriarContaComponent },
+    { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }
