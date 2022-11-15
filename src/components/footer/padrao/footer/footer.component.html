@@ -53,31 +53,25 @@
     <div class="secundaria">
         <div>
             <span>
-                Copyright © {{dataAtual | date:'yyyy'}} — GeekSpot — Desenvolvido por
+                Copyright © {{dataAtual | date:'yyyy'}} — GeekSpot — desenvolvido por
 
-                <a routerLink="https://github.com/junioranheu" target="_blank"
-                    class="cor-principal-hover">&nbsp;@junioranheu</a>
+                <a href="https://github.com/junioranheu" target="_blank" class="cor-principal-hover">@junioranheu</a> a
+                fim de estudos no framework Angular
             </span>
         </div>
 
-        <!-- <div class="direita">
+        <div class="direita">
             <div class="icones">
-                <span title={`${(isModoDark ? "Alternar para o modo light" : "Alternar para o modo dark" )}`">
-                    <FontAwesomeIcon class="pointer cor-principal-hover" icon={(isModoDark ? faSun : faMoon)} size="lg"
-                        onClick={()=> alterarModo(!isModoDark, setIsModoDark)} />
-                </span>
-
                 <span title="GitHub">
-                    <FontAwesomeIcon class="pointer cor-principal-hover" icon={faGithub} size="lg" onClick={()=> {
-                        window.open("https://github.com/junioranheu", "_blank") }} />
+                    <fa-icon [icon]="faGithub" class="pointer cor-principal-hover" size="lg"
+                        (click)="handleRedirecionarIconeGitHub()"></fa-icon>
                 </span>
 
                 <span title="Instagram">
-                    {/* <FontAwesomeIcon class="pointer cor-principal-hover" icon={faInstagram} size="lg" onClick={()=>
-                        { window.open("https://www.instagram.com/junioranheu/", "_blank") }} /> */}
-                        <FontAwesomeIcon class="pointer cor-principal-hover" icon={faInstagram} size="lg" />
+                    <fa-icon [icon]="faInstagram" class="pointer cor-principal-hover" size="lg"
+                        (click)="handleRedirecionarIconeInstagram()"></fa-icon>
                 </span>
             </div>
-        </div> -->
+        </div>
     </div>
 </footer>
