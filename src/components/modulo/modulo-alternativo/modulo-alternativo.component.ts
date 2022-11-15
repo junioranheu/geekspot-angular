@@ -22,7 +22,7 @@ export class ModuloAlternativoComponent implements OnInit {
         const imagem = item?.itensImagens?.find((x: any) => x.isAtivo)?.caminhoImagem;
 
         if (!imagem) {
-            return 'src/assets/images/cinza.webp';
+            return './assets/images/cinza.webp';
         }
 
         const urlFinal = `${urlUpload}/${imagem}`;

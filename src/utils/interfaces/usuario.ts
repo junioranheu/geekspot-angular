@@ -21,7 +21,6 @@ export default interface iUsuario {
     mensagemErro: string | null;
 
     // Propriedades extra que não estão na entidade Usuario que são usadas no front-end apenas;
-    genero: string | null;
     cep: string | null;
     isEmailVerificacaoContaEnviado: boolean | null;
     fotoAnterior: string | null;

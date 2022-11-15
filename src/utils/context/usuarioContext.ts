@@ -17,7 +17,6 @@ export const Auth = {
             token: data.token,
             refreshToken: data.refreshToken,
             dataAutenticacao: horarioBrasilia().format('YYYY-MM-DD HH:mm:ss'),
-            genero: data.genero,
             cep: data.cep
         };
 
@@ -56,7 +55,6 @@ export const Auth = {
             token: (data.token ?? Auth.get().token),
             refreshToken: (data.refreshToken ?? Auth.get().refreshToken),
             dataAutenticacao: (data.dataAutenticacao ?? Auth.get().dataAutenticacao),
-            genero: (data.genero ?? Auth.get().genero),
             cep: (data.cep ?? Auth.get().cep)
         };
 

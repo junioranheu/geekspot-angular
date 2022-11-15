@@ -7,6 +7,11 @@ import CONSTS_TELAS from 'src/utils/consts/outros/telas';
 import { Auth, UsuarioContext } from 'src/utils/context/usuarioContext';
 import iContextDadosUsuario from 'src/utils/interfaces/contextDadosUsuario';
 import iUsuario from 'src/utils/interfaces/usuario';
+import converterSrcImagemParaBase64 from 'src/utils/outros/converterSrcImagemParaBase64';
+import gerarImagemPerfilRandom from 'src/utils/outros/gerarImagemPerfilRandom';
+import horarioBrasilia from 'src/utils/outros/horarioBrasilia';
+import padronizarNomeCompletoUsuario from 'src/utils/outros/padronizarNomeCompletoUsuario';
+import validarDadosCriarConta from 'src/utils/outros/validarDadosCriarConta';
 import { AutenticarService } from 'src/utils/services/autenticar.service';
 
 @Component({
@@ -24,7 +29,13 @@ export class CriarContaComponent implements OnInit {
         private loadingBar: LoadingBarService
     ) { }
 
+    imagemPerfilRandomInicialBase6?: string;
     ngOnInit(): void {
+        converterSrcImagemParaBase64(gerarImagemPerfilRandom())
+            .then((base64: any) => {
+                // console.log(base64);
+                this.imagemPerfilRandomInicialBase6 = base64;
+            });
     }
 
     urlEntrar = CONSTS_TELAS.ENTRAR;
@@ -46,28 +57,54 @@ export class CriarContaComponent implements OnInit {
     @ViewChild('inputSenha', { static: false }) inputSenha: ElementRef | undefined;
     @ViewChild('inputConfirmarSenha', { static: false }) inputConfirmarSenha: ElementRef | undefined;
     async handleCriarConta(): Promise<boolean | void> {
-        if (!this.nomeUsuario || !this.senha) {
-            this.senha = '';
-            this.inputUsuario?.nativeElement.focus();
-            this.toastr.error('O nome de usuário e/ou e-mail estão vazios!', '');
+        this.loadingBar.start();
+
+        const isTrocouSenha = true;
+        let mensagemErroValidarDados = validarDadosCriarConta(this.nomeCompleto, this.email, this.nomeUsuario, this.senha, this.confirmarSenha, this.inputNomeCompleto, this.inputEmail, this.inputUsuario, this.inputSenha, isTrocouSenha);
+        if (mensagemErroValidarDados) {
+            this.toastr.error(mensagemErroValidarDados, '');
+            this.loadingBar.complete();
             return false;
         }
 
-        this.loadingBar.start();
+        console.log('OK');
+        return false;
 
-        const resposta = await this.autenticarService.postLogin(this.nomeUsuario, this.senha) as unknown as iUsuario;
+        // Atribuir o nome formatado para a variavel nome, novamente;
+        this.nomeCompleto = padronizarNomeCompletoUsuario(this.nomeCompleto ?? '');
+
+        // Criar conta;
+        const dto = {
+            nomeCompleto: this.nomeCompleto,
+            email: this.email,
+            nomeUsuarioSistema: this.nomeUsuario,
+            senha: this.senha,
+            usuarioTipoId: 2, // Usuário comum;
+            dataCriacao: horarioBrasilia().format('YYYY-MM-DD HH:mm:ss'),
+            foto: this.imagemPerfilRandomInicialBase6,
+            isAtivo: true,
+            isPremium: false,
+            IsVerificado: false
+        } as unknown as iUsuario;
+
+        const resposta = await this.autenticarService.postCriarConta(dto) as unknown as iUsuario;
         if (!resposta || resposta?.erro) {
             this.senha = '';
             this.inputUsuario?.nativeElement.focus();
-            this.toastr.error(resposta?.mensagemErro ?? 'Algo deu errado! Provavelmente o usuário e/ou a senha estão errados', '');
+            this.toastr.error(resposta?.mensagemErro ?? 'Parece que ocorreu um erro interno. Tente novamente mais tarde', '');
             this.loadingBar.complete();
             return false;
         }
 
         this.router.navigate([CONSTS_TELAS.INDEX]).then(() => {
-            resposta.cep = resposta?.usuariosInformacoes?.cep ?? '';
+            resposta.cep = '';
             Auth.set(resposta as unknown as iContextDadosUsuario);
             this.usuarioContext._behaviorIsAuth.next(true);
+
+            if (resposta.isEmailVerificacaoContaEnviado) {
+                this.toastr.success('Um e-mail de verificação de conta foi enviado para você 👽', '');
+            }
+
             this.loadingBar.complete();
         });
     }

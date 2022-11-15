@@ -9,6 +9,5 @@ export default interface iContextDadosUsuario {
     token: string | null;
     refreshToken: string | null;
     dataAutenticacao: Date | null;
-    genero: string | null;
     cep: string | null;
 }

@@ -314,13 +314,24 @@ select {
     animation-delay: calc(1s*0.3);
 }
 
-/* =-=-=-=-=-=-=-=-=-=-= Toast =-=-=-=-=-=-=-=-=-=-= */
+/* =-=-=-=-=-=-=-=-=-=-= Toast - ngx-toastr =-=-=-=-=-=-=-=-=-=-= */
 #toast-container {
     div {
         background-color: var(--verde) !important;
         box-shadow: var(--verde) !important;
         color: var(--preto) !important;
-        font-weight: 600;
+        font-weight: 600 !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Loading bar - @ngx-loading-bar/core =-=-=-=-=-=-=-=-=-=-= */
+ngx-loading-bar {
+    color: var(--verde) !important;
+
+    .ngx-bar {
+        background: var(--verde) !important;
+        height: 2.5px !important;
     }
 }
 
@@ -496,16 +507,6 @@ body::-webkit-scrollbar {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #949799;
-}
-
-/* =-=-=-=-=-=-=-=-=-=-= @ngx-loading-bar/core =-=-=-=-=-=-=-=-=-=-= */
-ngx-loading-bar {
-    color: var(--verde) !important;
-
-    .ngx-bar{
-        background: var(--verde) !important; 
-        height: 2.5px !important;
-    }
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= Margens =-=-=-=-=-=-=-=-=-=-= */
