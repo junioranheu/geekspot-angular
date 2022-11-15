@@ -1,21 +1,36 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
+import { Router } from '@angular/router';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 import { ToastrService } from 'ngx-toastr';
-import { Auth } from 'src/utils/context/usuarioContext';
+import { Auth, UsuarioContext } from 'src/utils/context/usuarioContext';
 import { environment } from 'src/utils/environments/environment';
 import iContextDadosUsuario from 'src/utils/interfaces/contextDadosUsuario';
+import desabilitarTodosElementos from 'src/utils/outros/desabilitarTodosElementos';
 import CONSTS_AUTENTICAR from '../../consts/data/constAutenticar';
 import horarioBrasilia from '../../outros/horarioBrasilia';
+import CONSTS_TELAS from '../outros/telas';
 import VERBOS_HTTP from '../outros/verbosHTTP';
 
 @Injectable({
     providedIn: 'root'
 })
-export class Fetch {
+export class Fetch implements OnInit {
 
-    constructor(private http: HttpClient, private toastr: ToastrService) { }
+    constructor(
+        private http: HttpClient,
+        private toastr: ToastrService,
+        private loadingBar: LoadingBarService,
+        private router: Router,
+        private usuarioContext: UsuarioContext
+    ) { }
+
+    isAuth: boolean | undefined;
+    ngOnInit(): void {
+        this.usuarioContext.isAuthObservable.subscribe(ia => this.isAuth = ia);
+    }
 
     public async getApi(url: string, isTentarRefreshToken: boolean = true) {
         const token = Auth?.get()?.token ?? '';
@@ -155,18 +170,15 @@ export class Fetch {
     }
 
     private deslogarUsuarioRefreshTokenInvalido() {
-        // nProgress.start();
-        // desabilitarTodosElementos(true);
-        // Aviso.custom(`A sua sessão expirou!<br/><br/>Renove sua sessão fazendo login novamente no ${CONSTS_SISTEMA.NOME_SISTEMA} 😎`, numeroAleatorio(1000, 2000));
+        this.loadingBar.start();
+        desabilitarTodosElementos(true);
+        this.toastr.info(`A sua sessão expirou!<br/><br/>Renove sua sessão fazendo login novamente no GeekSpot 😎`, '');
 
-        // Router.push({ pathname: '/erro/sessao-expirada', query: { erro: CONSTS_ERROS.REFRESH_TOKEN_INVALIDO } }).then(() => {
-        //     Auth.delete();
-        //     nProgress.done();
-
-        //     setTimeout(function () {
-        //         location.reload();
-        //     }, numeroAleatorio(100, 150));
-        // });
+        this.router.navigate([CONSTS_TELAS.ERRO]).then(() => {
+            Auth.delete();
+            this.usuarioContext._behaviorIsAuth.next(false);
+            this.loadingBar.complete();
+        });
     }
 
 }
