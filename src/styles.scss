@@ -498,6 +498,16 @@ body::-webkit-scrollbar {
     background: #949799;
 }
 
+/* =-=-=-=-=-=-=-=-=-=-= @ngx-loading-bar/core =-=-=-=-=-=-=-=-=-=-= */
+ngx-loading-bar {
+    color: var(--verde) !important;
+
+    .ngx-bar{
+        background: var(--verde) !important; 
+        height: 2.5px !important;
+    }
+}
+
 /* =-=-=-=-=-=-=-=-=-=-= Margens =-=-=-=-=-=-=-=-=-=-= */
 .margem0_5 {
     margin-top: 0.5rem;

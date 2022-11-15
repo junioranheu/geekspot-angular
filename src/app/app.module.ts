@@ -4,7 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { LoadingBarModule } from '@ngx-loading-bar/core'; // https://www.npmjs.com/package/@ngx-loading-bar/core
 import { ToastrModule } from 'ngx-toastr'; // https://www.npmjs.com/package/ngx-toastr
+
 import { UsuarioContext } from 'src/utils/context/usuarioContext';
 
 import { NavbarFiltroComponent } from '../components/navbar/outros/navbar-filtro/navbar-filtro.component';
@@ -38,9 +40,10 @@ import { EntrarComponent } from './usuario/entrar/entrar.component';
         BrowserModule,
         AppRoutingModule,
         FormsModule,
+        HttpClientModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot(),
-        HttpClientModule
+        LoadingBarModule
     ],
     providers: [UsuarioContext], // https://stackoverflow.com/questions/36158848/how-can-i-declare-a-global-variable-in-angular-2-typescript
     bootstrap: [AppComponent]
