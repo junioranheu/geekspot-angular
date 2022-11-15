@@ -14,7 +14,7 @@ export class ItemService {
     async getListaItensGroupByUsuario(): Promise<iItem[] | null> {
         const url = CONST_ITENS.API_URL_LISTA_ITENS_GROUP_BY_USUARIO;
         const resposta = await this.fetch.getApi(url) as iItem[];
-        console.log(resposta);
+        // console.log(resposta);
 
         if (resposta) {
             return resposta;

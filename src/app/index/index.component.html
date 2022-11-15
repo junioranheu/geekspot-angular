@@ -2,4 +2,11 @@
     <span class="titulo">Página inicial</span>
     <br />
     <span class="texto">{{this.isAuth ? "Você está logado" : "Você NÃO está logado"}}</span>
+
+    <hr />
+    <div *ngFor="let item of listaItens; let i = index">
+        <div *ngFor="let itemInterno of item">
+            {{itemInterno.nome}}
+        </div>
+    </div>
 </section>
