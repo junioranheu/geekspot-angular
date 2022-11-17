@@ -71,5 +71,5 @@ export default interface iItem {
 
     erro: boolean | null;
     codigoErro: number | null;
-    mensagem: string | null;
+    mensagemErro: string | null;
 }

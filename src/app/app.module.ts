@@ -12,6 +12,7 @@ import { ToastrModule } from 'ngx-toastr'; // https://www.npmjs.com/package/ngx-
 import { UsuarioContext } from 'src/utils/context/usuarioContext';
 
 import { FooterComponent } from '../components/footer/padrao/footer/footer.component';
+import { AdmAtualizarItemComponent } from '../components/item/adm-atualizar-item/adm-atualizar-item.component';
 import { ModuloAlternativoComponent } from '../components/modulo/modulo-alternativo/modulo-alternativo.component';
 import { NavbarFiltroComponent } from '../components/navbar/outros/navbar-filtro/navbar-filtro.component';
 import { NavbarSmallComponent } from '../components/navbar/outros/navbar-small/navbar-small.component';
@@ -21,13 +22,14 @@ import { SvgAjudaComponent } from '../components/svg/svg-ajuda/svg-ajuda.compone
 import { SvgLogoComponent } from '../components/svg/svg-logo/svg-logo.component';
 import { SvgLupaComponent } from '../components/svg/svg-lupa/svg-lupa.component';
 import { SvgSetaUmComponent } from '../components/svg/svg-seta-um/svg-seta-um.component';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ErroComponent } from './erro/erro.component';
 import { IndexComponent } from './index/index.component';
+import { ItemComponent } from './item/item.component';
 import { CriarContaComponent } from './usuario/criar-conta/criar-conta.component';
 import { EntrarComponent } from './usuario/entrar/entrar.component';
-import { ErroComponent } from './erro/erro.component';
-import { ItemComponent } from './item/item.component';
 
 @NgModule({
     declarations: [
@@ -46,7 +48,8 @@ import { ItemComponent } from './item/item.component';
         FooterComponent,
         CriarContaComponent,
         ErroComponent,
-        ItemComponent
+        ItemComponent,
+        AdmAtualizarItemComponent
     ],
     imports: [
         BrowserModule,

@@ -35,4 +35,16 @@ export class ItemService {
         return null;
     }
 
+    async atualizarItem(dto: iItem): Promise<iItem | null> {
+        const url = CONST_ITENS.API_URL_PUT_ATUALIZAR;
+        const resposta = await this.fetch.putApi(url, dto) as iItem;
+        // console.log(resposta);
+
+        if (resposta) {
+            return resposta;
+        }
+
+        return null;
+    }
+
 }

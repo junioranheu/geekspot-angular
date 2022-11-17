@@ -1,0 +1,28 @@
+<section *ngIf="isAdm" class="divAdmAtualizarItem animate__animated animate__fadeIn">
+    <input class="input" type="text" placeholder="Nome" [(ngModel)]="nome" (keydown.enter)="handleAtualizar()"
+        #inputNome />
+
+    <input class="input margem0_5" type="text" placeholder="Descrição" [(ngModel)]="descricao"
+        (keydown.enter)="handleAtualizar()" #inputNome />
+
+    <input class="input margem0_5" type="text" placeholder="Tamanho" [(ngModel)]="tamanho"
+        (keydown.enter)="handleAtualizar()" />
+
+    <input class="input margem0_5" type="text" placeholder="Marco" [(ngModel)]="marca"
+        (keydown.enter)="handleAtualizar()" #inputMarca />
+
+    <input class="input margem0_5" type="text" placeholder="Condição" [(ngModel)]="condicao"
+        (keydown.enter)="handleAtualizar()" #inputCondicao />
+
+    <input class="input margem0_5" type="text" placeholder="Preço" [(ngModel)]="preco"
+        (keydown.enter)="handleAtualizar()" #inputPreco />
+
+    <input class="input margem0_5" type="text" placeholder="Preço com desconto" [(ngModel)]="precoDesconto"
+        (keydown.enter)="handleAtualizar()" #inputPrecoDesconto />
+
+    <div class="margem0_5">
+        <app-botao [texto]="'Atualizar dados'" [url]="null" [isNovaAba]="false" (handleFuncao)="handleAtualizar()"
+            [isEnabled]="true" [cor]="null" [corFonte]="null">
+        </app-botao>
+    </div>
+</section>
