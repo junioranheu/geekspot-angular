@@ -1,5 +1,6 @@
 import { Component, Input, NgIterable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import CONSTS_UPLOAD from 'src/utils/consts/data/constUpload';
 import CONSTS_TELAS from 'src/utils/consts/outros/telas';
 import iItem from 'src/utils/interfaces/item';
@@ -18,7 +19,7 @@ export class ModuloAlternativoComponent implements OnInit {
     ngOnInit(): void {
 
     }
-
+ 
     buscarImagem(item: iItem) {
         const urlUpload = CONSTS_UPLOAD.API_URL_GET_ITENS_IMAGENS;
         const imagem = item?.itensImagens?.find((x: any) => x.isAtivo)?.caminhoImagem;

@@ -1,3 +1,9 @@
 <section class="paddingPadrao animate__animated animate__fadeIn">
-    <span class="titulo">{{item?.nome}}</span>
+    <div class="divItem">
+        <img src="{{buscarImagem(item)}}" width="224" height="224" />
+
+        <span class="titulo cor-principal-hover pointer">
+            {{item?.nome}}
+        </span>
+    </div>
 </section>
