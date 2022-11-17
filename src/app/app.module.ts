@@ -27,6 +27,7 @@ import { IndexComponent } from './index/index.component';
 import { CriarContaComponent } from './usuario/criar-conta/criar-conta.component';
 import { EntrarComponent } from './usuario/entrar/entrar.component';
 import { ErroComponent } from './erro/erro.component';
+import { ItemComponent } from './item/item.component';
 
 @NgModule({
     declarations: [
@@ -44,7 +45,8 @@ import { ErroComponent } from './erro/erro.component';
         ModuloAlternativoComponent,
         FooterComponent,
         CriarContaComponent,
-        ErroComponent
+        ErroComponent,
+        ItemComponent
     ],
     imports: [
         BrowserModule,
