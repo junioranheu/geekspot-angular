@@ -23,4 +23,16 @@ export class ItemService {
         return null;
     }
 
+    async getItem(id: number): Promise<iItem | null> {
+        const url = `${CONST_ITENS.API_URL_GET_BY_ID}/${id}`;
+        const resposta = await this.fetch.getApi(url) as iItem;
+        // console.log(resposta);
+
+        if (resposta) {
+            return resposta;
+        }
+
+        return null;
+    }
+
 }
