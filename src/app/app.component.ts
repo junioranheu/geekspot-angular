@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     title = 'GeekSpot — Angular';
+
+    handleScrollTop() {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        console.clear();
+    }
 }

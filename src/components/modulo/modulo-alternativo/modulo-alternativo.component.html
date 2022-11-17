@@ -17,7 +17,7 @@
 
     <drag-scroll style="width: 100%; height: fit-content;" [scrollbar-hidden]="true">
         <div class="container margem1">
-            <div *ngFor="let itemInterno of item" class="wrapImagem">
+            <div *ngFor="let itemInterno of item" class="wrapImagem" (click)="handleRedirecionar(itemInterno)">
                 <img src="{{buscarImagem(itemInterno)}}" width="224" height="224" />
 
                 <span class="cor-principal-hover pointer">

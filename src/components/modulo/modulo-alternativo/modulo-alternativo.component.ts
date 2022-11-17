@@ -1,5 +1,7 @@
 import { Component, Input, NgIterable, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import CONSTS_UPLOAD from 'src/utils/consts/data/constUpload';
+import CONSTS_TELAS from 'src/utils/consts/outros/telas';
 import iItem from 'src/utils/interfaces/item';
 
 @Component({
@@ -11,7 +13,7 @@ export class ModuloAlternativoComponent implements OnInit {
 
     @Input() listaItens: iItem[] | null | undefined | NgIterable<any>;
 
-    constructor() { }
+    constructor(private router: Router) { }
 
     ngOnInit(): void {
 
@@ -28,6 +30,10 @@ export class ModuloAlternativoComponent implements OnInit {
         const urlFinal = `${urlUpload}/${imagem}`;
 
         return urlFinal;
+    }
+
+    handleRedirecionar(item: iItem): void {
+        this.router.navigate([`${CONSTS_TELAS.ITEM}/${item.itemId}`]);
     }
 
 }
