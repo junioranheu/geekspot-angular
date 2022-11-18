@@ -62,6 +62,7 @@ export class AdmAtualizarItemComponent implements OnInit, OnChanges {
         this.loadingBar.start();
 
         const dto = {
+            itemId: this.item?.itemId,
             nome: this.nome,
             descricao: this.descricao,
             tamanho: this.tamanho,
