@@ -1,7 +1,9 @@
 <main class="main semHighlight">
     <ngx-loading-bar></ngx-loading-bar>
     <app-navbar-small></app-navbar-small>
-    <app-navbar-padrao></app-navbar-padrao>
+    
+    <app-navbar-padrao *ngIf="!isSmall"></app-navbar-padrao>
+    <app-navbar-mobile *ngIf="isSmall"></app-navbar-mobile>
 
     <section class="sessaoPrincipal">
         <router-outlet (activate)="handleScrollTop()"></router-outlet>
