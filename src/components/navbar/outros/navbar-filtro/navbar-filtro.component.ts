@@ -8,7 +8,7 @@ import CONSTS_TELAS from 'src/utils/consts/outros/telas';
 })
 export class NavbarFiltroComponent implements OnInit {
 
-  urlLupa = CONSTS_TELAS.ENTRAR;
+  urlLupa = CONSTS_TELAS.INDISPONIVEL;
 
   constructor() { }
 
