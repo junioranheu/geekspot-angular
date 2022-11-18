@@ -1,0 +1,117 @@
+$altura-navbar: 70px;
+
+/* =-=-=-=-=-=-=-=-=-=-= navbar.mobile.module =-=-=-=-=-=-=-=-=-=-= */
+.navbar {
+    background-color: var(--branco);
+    color: var(--preto);
+    height: $altura-navbar;
+    width: 100vw;
+    border-bottom: var(--border);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .wrapper {
+        // background-color: pink;
+        width: 90%;
+        display: flex;
+        align-items: center;
+
+        .divEsquerda {
+            // background-color: red;
+            width: 100%;
+            display: flex;
+            justify-content: left;
+            gap: 0.5rem;
+        }
+
+        .divDireita {
+            // background-color: turquoise;
+            display: flex;
+            justify-content: right;
+        }
+
+        a {
+            // background-color: pink; 
+            color: var(--preto);
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1;
+            white-space: nowrap;
+
+            padding: 5px 14px;
+            opacity: 0.7;
+            border-radius: 12px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Classes utilizados para estilizar os elementos que estão dentro do modal lateral em navbar.mobile.tsx =-=-=-=-=-=-=-=-=-=-= */
+.divAtalhos {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.8rem;
+
+    font-weight: 500;
+    margin-top: 1rem;
+    font-size: 1rem;
+
+    .divOpcoes {
+        // background-color: red;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+
+        a {
+            // background-color: blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    a {
+        // background-color: red;
+        width: fit-content;
+        transition: .2s ease-in-out;
+
+        &:hover {
+            color: var(--cor-principal) !important;
+            opacity: 1 !important;
+            transition: .2s ease-in-out;
+        }
+    }
+}
+
+.sessaoBotoes {
+    //  background-color: red; 
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.8rem;
+    margin-top: 1rem;
+
+    .botaoPadrao {
+        button {
+            width: 100%;
+        }
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:801px) {}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {}
+
+/* smartphones, Android phones, landscape iPhone */
+@media (max-width:480px) {}

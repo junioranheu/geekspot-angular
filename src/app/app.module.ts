@@ -24,6 +24,7 @@ import { SvgLupaComponent } from '../components/svg/svg-lupa/svg-lupa.component'
 import { SvgSetaUmComponent } from '../components/svg/svg-seta-um/svg-seta-um.component';
 
 import { NavbarMobileComponent } from '../components/navbar/mobile/navbar-mobile/navbar-mobile.component';
+import { SvgHamburguerComponent } from '../components/svg/svg-hamburguer/svg-hamburguer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErroComponent } from './erro/erro.component';
@@ -51,7 +52,8 @@ import { EntrarComponent } from './usuario/entrar/entrar.component';
         ErroComponent,
         ItemComponent,
         AdmAtualizarItemComponent,
-        NavbarMobileComponent
+        NavbarMobileComponent,
+        SvgHamburguerComponent
     ],
     imports: [
         BrowserModule,
