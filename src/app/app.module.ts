@@ -23,6 +23,7 @@ import { SvgLogoComponent } from '../components/svg/svg-logo/svg-logo.component'
 import { SvgLupaComponent } from '../components/svg/svg-lupa/svg-lupa.component';
 import { SvgSetaUmComponent } from '../components/svg/svg-seta-um/svg-seta-um.component';
 
+import { NavbarMobileComponent } from '../components/navbar/mobile/navbar-mobile/navbar-mobile.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErroComponent } from './erro/erro.component';
@@ -49,7 +50,8 @@ import { EntrarComponent } from './usuario/entrar/entrar.component';
         CriarContaComponent,
         ErroComponent,
         ItemComponent,
-        AdmAtualizarItemComponent
+        AdmAtualizarItemComponent,
+        NavbarMobileComponent
     ],
     imports: [
         BrowserModule,
