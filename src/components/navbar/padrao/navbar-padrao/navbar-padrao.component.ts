@@ -14,7 +14,7 @@ export class NavbarPadraoComponent implements OnInit {
 
     urlIndex = CONSTS_TELAS.INDEX;
     urlEntrar = CONSTS_TELAS.ENTRAR;
-    urlAjuda = CONSTS_TELAS.AJUDA;
+    urlTelaIndisponivel = CONSTS_TELAS.INDISPONIVEL;
 
     constructor(
         private usuarioContext: UsuarioContext,

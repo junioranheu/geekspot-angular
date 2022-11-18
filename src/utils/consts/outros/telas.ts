@@ -3,8 +3,8 @@ const CONSTS_TELAS = {
     ENTRAR: 'usuario/entrar',
     CRIAR_CONTA: 'usuario/criar-conta',
     ERRO: 'erro',
-    AJUDA: 'ajuda',
-    ITEM: 'item'
+    ITEM: 'item',
+    INDISPONIVEL: 'tela-indisponivel'
 };
 
 export default CONSTS_TELAS;

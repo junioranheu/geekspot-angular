@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioContext } from 'src/utils/context/usuarioContext';
 
 import { faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import CONSTS_TELAS from 'src/utils/consts/outros/telas';
 
 @Component({
     selector: 'app-footer',
@@ -10,6 +11,7 @@ import { faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons';
 })
 export class FooterComponent implements OnInit {
 
+    urlTelaIndisponivel = CONSTS_TELAS.INDISPONIVEL;
     dataAtual = new Date();
     faGithub = faGithub;
     faInstagram = faInstagram;

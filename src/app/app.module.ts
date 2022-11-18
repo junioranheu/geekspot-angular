@@ -32,6 +32,7 @@ import { IndexComponent } from './index/index.component';
 import { ItemComponent } from './item/item.component';
 import { CriarContaComponent } from './usuario/criar-conta/criar-conta.component';
 import { EntrarComponent } from './usuario/entrar/entrar.component';
+import { TelaIndisponivelComponent } from './tela-indisponivel/tela-indisponivel.component';
 
 @NgModule({
     declarations: [
@@ -53,7 +54,8 @@ import { EntrarComponent } from './usuario/entrar/entrar.component';
         ItemComponent,
         AdmAtualizarItemComponent,
         NavbarMobileComponent,
-        SvgHamburguerComponent
+        SvgHamburguerComponent,
+        TelaIndisponivelComponent
     ],
     imports: [
         BrowserModule,
