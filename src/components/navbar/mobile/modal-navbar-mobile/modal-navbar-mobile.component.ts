@@ -36,6 +36,7 @@ export class ModalNavbarMobileComponent implements OnInit {
 
     handleDeslogar(): void {
         this.loadingBar.start();
+        this.handleModal.emit(); // Fechar o modal também;
         this.router.navigate([CONSTS_TELAS.INDEX]).then(() => {
             this.usuarioContext._behaviorIsAuth.next(false);
             Auth.delete();
