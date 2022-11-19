@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@an
 })
 export class ModalComponent implements OnInit {
 
+     // Tutorial Navbar: https://consolelog.com.br/modal-animations-angular/
     @Input() titulo?: string | null | undefined;
     @Input() componentChild!: TemplateRef<any> | null;
     @Input() tamanho?: string | null | undefined;

@@ -1,0 +1,37 @@
+<ng-container *ngIf="isAuth">
+    <ng-container *ngIf="isMeuPerfilBotao">
+        <app-botao [texto]="'Meu perfil'" [url]="urlPerfil" [isNovaAba]="false" (handleFuncao)="null" [isEnabled]="true"
+            [cor]="null" [corFonte]="null">
+        </app-botao>
+    </ng-container>
+
+    <ng-container *ngIf="!isMeuPerfilBotao">
+        <a [href]="urlPerfil">
+            <app-svg-loja></app-svg-loja>&nbsp;&nbsp;Meu perfil
+        </a>
+    </ng-container>
+</ng-container>
+
+<!-- <Fragment>
+    {
+        isAuth && (
+            <Fragment>
+                {
+                    isMeuPerfilBotao ? (
+                        <Botao texto='Meu perfil' url={urlPerfil} isNovaAba={false} handleFuncao={() => null} Svg={null} refBtn={null} isEnabled={true} />
+                    ) : (
+                        <Link href={urlPerfil}><a><Loja width={16} url={null} title={null} isCorPrincipal={false} />&nbsp;&nbsp;Meu perfil</a></Link>
+                    )
+                }
+
+                <Link href={CONSTS_TELAS.QUERO_VENDER}><a><Item width={16} url={null} title={null} isCorPrincipal={false} />&nbsp;&nbsp;Quero vender</a></Link>
+                <Link href='/xxx'><a><Inbox width={16} url={null} title={null} isCorPrincipal={false} />&nbsp;&nbsp;Inbox</a></Link>
+                <Link href='/xxx'><a><Coracao width={16} url={null} title={null} isCorPrincipal={false} />&nbsp;&nbsp;Favoritos</a></Link>
+                <Link href={CONSTS_TELAS.PERFIL_EDITAR}><a><Configuracao width={16} url={null} title={null} isCorPrincipal={false} />&nbsp;&nbsp;Configurações</a></Link>
+            </Fragment>
+        )
+    }
+
+    <Link href={CONSTS_TELAS.SEGURANCA}><a><Seguranca width={16} url={null} title={null} isCorPrincipal={false} />&nbsp;&nbsp;Segurança</a></Link>
+    <Link href={CONSTS_TELAS.AJUDA}><a><Ajuda width={16} url={null} title={null} isCorPrincipal={false} />&nbsp;&nbsp;Ajuda</a></Link>
+</Fragment> -->
