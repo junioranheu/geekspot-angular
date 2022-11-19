@@ -8,6 +8,7 @@ import CONSTS_TELAS from 'src/utils/consts/outros/telas';
 })
 export class NavbarMobileComponent implements OnInit {
 
+    // Tutorial Navbar: https://consolelog.com.br/modal-animations-angular/
     urlIndex = CONSTS_TELAS.INDEX;
 
     constructor() { }
@@ -15,9 +16,9 @@ export class NavbarMobileComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    mostrar: boolean = false;
-    toggle() {
-        this.mostrar = !this.mostrar;
+    isModalNavbarMobileOpen: boolean = false;
+    handleModalNavbarMobile() {
+        this.isModalNavbarMobileOpen = !this.isModalNavbarMobileOpen;
     }
 
 }

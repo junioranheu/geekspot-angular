@@ -23,6 +23,7 @@ import { SvgLogoComponent } from '../components/svg/svg-logo/svg-logo.component'
 import { SvgLupaComponent } from '../components/svg/svg-lupa/svg-lupa.component';
 import { SvgSetaUmComponent } from '../components/svg/svg-seta-um/svg-seta-um.component';
 
+import { ModalComponent } from '../components/modal/modal.component';
 import { ModalNavbarMobileComponent } from '../components/navbar/mobile/modal-navbar-mobile/modal-navbar-mobile.component';
 import { NavbarMobileComponent } from '../components/navbar/mobile/navbar-mobile/navbar-mobile.component';
 import { SvgHamburguerComponent } from '../components/svg/svg-hamburguer/svg-hamburguer.component';
@@ -57,7 +58,8 @@ import { EntrarComponent } from './usuario/entrar/entrar.component';
         NavbarMobileComponent,
         SvgHamburguerComponent,
         TelaIndisponivelComponent,
-        ModalNavbarMobileComponent
+        ModalNavbarMobileComponent,
+        ModalComponent
     ],
     imports: [
         BrowserModule,

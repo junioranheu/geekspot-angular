@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
     selector: 'app-modal-navbar-mobile',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalNavbarMobileComponent implements OnInit {
 
+    @Output() handleModal: EventEmitter<any> = new EventEmitter(); 
+
     constructor() { }
 
     ngOnInit(): void {
+    }
+
+    fnHandleModal() {
+        if (this.handleModal) {
+            this.handleModal.emit();
+        }
     }
 
 }

@@ -1,0 +1,63 @@
+.modal {
+    background: var(--branco);
+    background-clip: padding-box !important; // Desbugar as bordas com cores diferentes (bug do navegador);
+    border-radius: 10px;
+    min-width: 320px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999999;
+
+    .divCabecalho {
+        // background-color: red;
+        border-bottom: 1px solid var(--bege);
+        height: 65px;
+        max-height: 65px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .cabecalhoTitulo {
+            // color: pink;
+            color: var(--preto);
+            font-size: 1.3em;
+            font-weight: 600;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: 80%;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .botaoFechar {
+            cursor: pointer;
+            padding: 0px;
+            background: transparent;
+            color: var(--preto);
+            transition: 0.2s;
+            position: absolute;
+            top: auto;
+            right: 2rem;
+            border: none;
+
+            &:hover {
+                color: var(--cor-principal);
+                transition: 0.2s;
+            }
+        }
+    }
+}
+
+.overlay {
+    background: rgba(72, 72, 72, 0.6);
+    height: 100vh;
+    left: 0;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 10;
+}

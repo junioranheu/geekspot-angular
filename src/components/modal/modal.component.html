@@ -1,0 +1,21 @@
+<div class="modal animate__animated animate__fadeIn">
+    <div class="divCabecalho">
+        <button aria-label="Fechar" title="Fechar" type="button" class="botaoFechar" (click)="fnHandleModal()">
+            <span>
+                <svg viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 16px; width: 16px;
+                    stroke: currentcolor; overflow: visible">
+                    <path d="m6 6 20 20"></path>
+                    <path d="m26 6-20 20"></path>
+                </svg>
+            </span>
+        </button>
+
+        <div class="cabecalhoTitulo">
+            {{titulo}}
+        </div>
+    </div>
+
+    <ng-container [ngTemplateOutlet]="componentChild"></ng-container>
+</div>
+
+<div class="overlay"></div>
