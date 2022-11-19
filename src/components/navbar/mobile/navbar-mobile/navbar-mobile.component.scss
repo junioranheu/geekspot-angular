@@ -51,58 +51,6 @@ $altura-navbar: 70px;
     }
 }
 
-/* =-=-=-=-=-=-=-=-=-=-= Classes utilizados para estilizar os elementos que estão dentro do modal lateral em navbar.mobile.tsx =-=-=-=-=-=-=-=-=-=-= */
-.divAtalhos {
-    /* background-color: red; */
-    display: flex;
-    flex-direction: column;
-    row-gap: 0.8rem;
-
-    font-weight: 500;
-    margin-top: 1rem;
-    font-size: 1rem;
-
-    .divOpcoes {
-        // background-color: red;
-        display: flex;
-        flex-direction: column;
-        gap: 1.2rem;
-
-        a {
-            // background-color: blue;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    }
-
-    a {
-        // background-color: red;
-        width: fit-content;
-        transition: .2s ease-in-out;
-
-        &:hover {
-            color: var(--cor-principal) !important;
-            opacity: 1 !important;
-            transition: .2s ease-in-out;
-        }
-    }
-}
-
-.sessaoBotoes {
-    //  background-color: red; 
-    display: flex;
-    flex-direction: column;
-    row-gap: 0.8rem;
-    margin-top: 1rem;
-
-    .botaoPadrao {
-        button {
-            width: 100%;
-        }
-    }
-}
-
 /* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
 /* big landscape tablets, laptops, and desktops */
 @media (max-width:1025px) {}

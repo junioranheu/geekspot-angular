@@ -9,9 +9,14 @@
         </div>
 
         <div class="divDireita">
-            <a>
+            <a (click)="toggle()">
                 <app-svg-hamburguer></app-svg-hamburguer>
             </a>
         </div>
     </div>
 </nav>
+
+<ng-container *ngIf="mostrar">
+    <app-modal-navbar-mobile></app-modal-navbar-mobile>
+    <div (click)="toggle()" class="overlay"></div>
+</ng-container>

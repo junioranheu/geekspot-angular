@@ -23,6 +23,7 @@ import { SvgLogoComponent } from '../components/svg/svg-logo/svg-logo.component'
 import { SvgLupaComponent } from '../components/svg/svg-lupa/svg-lupa.component';
 import { SvgSetaUmComponent } from '../components/svg/svg-seta-um/svg-seta-um.component';
 
+import { ModalNavbarMobileComponent } from '../components/navbar/mobile/modal-navbar-mobile/modal-navbar-mobile.component';
 import { NavbarMobileComponent } from '../components/navbar/mobile/navbar-mobile/navbar-mobile.component';
 import { SvgHamburguerComponent } from '../components/svg/svg-hamburguer/svg-hamburguer.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -30,9 +31,9 @@ import { AppComponent } from './app.component';
 import { ErroComponent } from './erro/erro.component';
 import { IndexComponent } from './index/index.component';
 import { ItemComponent } from './item/item.component';
+import { TelaIndisponivelComponent } from './tela-indisponivel/tela-indisponivel.component';
 import { CriarContaComponent } from './usuario/criar-conta/criar-conta.component';
 import { EntrarComponent } from './usuario/entrar/entrar.component';
-import { TelaIndisponivelComponent } from './tela-indisponivel/tela-indisponivel.component';
 
 @NgModule({
     declarations: [
@@ -55,7 +56,8 @@ import { TelaIndisponivelComponent } from './tela-indisponivel/tela-indisponivel
         AdmAtualizarItemComponent,
         NavbarMobileComponent,
         SvgHamburguerComponent,
-        TelaIndisponivelComponent
+        TelaIndisponivelComponent,
+        ModalNavbarMobileComponent
     ],
     imports: [
         BrowserModule,
