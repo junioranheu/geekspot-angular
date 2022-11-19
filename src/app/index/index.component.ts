@@ -9,7 +9,7 @@ import { ItemService } from 'src/utils/services/item.service';
     styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
-
+ 
     constructor(private usuarioContext: UsuarioContext, private itemService: ItemService) { }
 
     isAuth: boolean | undefined;

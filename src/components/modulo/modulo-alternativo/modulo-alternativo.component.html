@@ -1,5 +1,5 @@
 <div *ngFor="let item of listaItens; let i = index" class="flexColumn">
-    <div class="flexRow" [class.margem3_5]="i > 0 && 'margem3'">
+    <div class="flexRow" [class.margem3_5]="i > 0">
         <div class="flexColumn">
             <b class="titulo cor-principal-hover pointer">
                 {{(item[0]?.usuarios?.usuariosInformacoes?.lojinhaTitulo ??

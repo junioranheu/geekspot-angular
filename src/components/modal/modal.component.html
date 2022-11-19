@@ -1,4 +1,5 @@
-<div class="modal animate__animated animate__fadeIn">
+<div class="modal animate__animated animate__fadeIn" [class.modalGigante]="tamanho === 'gigante'"
+    [class.modalGrande]="tamanho === 'grande'" [class.modalPequeno]="tamanho === 'pequeno'">
     <div class="divCabecalho">
         <button aria-label="Fechar" title="Fechar" type="button" class="botaoFechar" (click)="fnHandleModal()">
             <span>

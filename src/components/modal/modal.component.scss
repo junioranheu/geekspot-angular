@@ -61,3 +61,21 @@
     width: 100vw;
     z-index: 10;
 }
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Opções =-=-=-=-=-=-=-=-=-=-=-=- */
+.modalGigante {
+    width: 80vw !important;
+}
+
+.modalGrande {
+    width: 60vw !important;
+}
+
+.modalPequeno {
+    width: 30vw !important;
+}
+
+.modal::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}

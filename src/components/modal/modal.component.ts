@@ -9,6 +9,7 @@ export class ModalComponent implements OnInit {
 
     @Input() titulo?: string | null | undefined;
     @Input() componentChild!: TemplateRef<any> | null;
+    @Input() tamanho?: string | null | undefined;
     @Output() handleModal: EventEmitter<any> = new EventEmitter();
 
     constructor() { }

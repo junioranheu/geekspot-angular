@@ -1,5 +1,29 @@
-<app-modal [titulo]="'testeeee'" [componentChild]="conteudo" (handleModal)="fnHandleModal()"></app-modal>
+<app-modal [titulo]="'🤠'" [componentChild]="conteudo" [tamanho]="'gigante'" (handleModal)="fnHandleModal()">
+</app-modal>
 
 <ng-template #conteudo>
-    <h1>BUCETA</h1>
+    <div class="divAtalhos">
+        <div class="divOpcoes margem0_5">
+            <h1>Teste</h1>
+            <!-- <MenuUsuarioOpcoes isMeuPerfilBotao={false} urlPerfil={urlPerfil} /> -->
+        </div>
+
+        <div class="divisao margem1">ou</div>
+
+        <div *ngIf="this.isAuth">
+            <app-botao [texto]="'Sair'" [url]="null" [isNovaAba]="false" (handleFuncao)="handleDeslogar()"
+                [isEnabled]="true">
+            </app-botao>
+        </div>
+
+        <div *ngIf="!this.isAuth" class="margem1">
+            <app-botao [texto]="'Entrar agora mesmo'" [url]="urlEntrar" [isNovaAba]="false" (handleFuncao)="null"
+                [isEnabled]="true"></app-botao>
+
+            <div class="margem0_5">
+                <app-botao [texto]="'Crie sua conta'" [url]="urlCriarConta" [isNovaAba]="false" (handleFuncao)="null"
+                    [isEnabled]="true"></app-botao>
+            </div>
+        </div>
+    </div>
 </ng-template>
