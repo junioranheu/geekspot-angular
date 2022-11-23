@@ -4,7 +4,8 @@ const CONSTS_TELAS = {
     CRIAR_CONTA: 'usuario/criar-conta',
     ERRO: 'erro',
     ITEM: 'item',
-    INDISPONIVEL: 'tela-indisponivel'
+    INDISPONIVEL: 'tela-indisponivel',
+    GRAFICOS: 'graficos'
 };
 
 export default CONSTS_TELAS;

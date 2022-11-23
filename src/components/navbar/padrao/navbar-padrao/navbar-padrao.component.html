@@ -11,6 +11,7 @@
         <div class="divDireita">
             <a routerLink="{{urlTelaIndisponivel}}" class="efeitoBottom">Produtos</a>
             <a routerLink="{{urlTelaIndisponivel}}" class="efeitoBottom">Promoções</a>
+            <a *ngIf="isAuth" routerLink="{{urlGraficos}}" class="efeitoBottom">Gráficos</a>
 
             <span class="separador"></span>
 
@@ -36,12 +37,12 @@
 
             <span class="separador"></span>
 
-            <div *ngIf="this.isAuth">
+            <div *ngIf="isAuth">
                 <app-botao [texto]="'Sair'" [url]="null" [isNovaAba]="false" (handleFuncao)="handleDeslogar()" [isEnabled]="true">
                 </app-botao>
             </div>
 
-            <div *ngIf="!this.isAuth">
+            <div *ngIf="!isAuth">
                 <app-botao [texto]="'Entrar agora mesmo'" [url]="urlEntrar" [isNovaAba]="false" (handleFuncao)="null"
                     [isEnabled]="true"></app-botao>
             </div>

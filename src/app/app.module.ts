@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Pacotes;
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; // https://www.npmjs.com/package/@fortawesome/angular-fontawesome
 import { LoadingBarModule } from '@ngx-loading-bar/core'; // https://www.npmjs.com/package/@ngx-loading-bar/core
+import { AgChartsAngularModule } from 'ag-charts-angular'; // https://www.npmjs.com/package/ag-charts-community & https://www.ag-grid.com/angular-charts/gallery/simple-bar/
 import { DragScrollModule } from 'ngx-drag-scroll'; // https://www.npmjs.com/package/ngx-drag-scroll
 import { ToastrModule } from 'ngx-toastr'; // https://www.npmjs.com/package/ngx-toastr
 
@@ -41,6 +42,7 @@ import { ItemComponent } from './item/item.component';
 import { TelaIndisponivelComponent } from './tela-indisponivel/tela-indisponivel.component';
 import { CriarContaComponent } from './usuario/criar-conta/criar-conta.component';
 import { EntrarComponent } from './usuario/entrar/entrar.component';
+import { GraficosComponent } from './graficos/graficos.component';
 
 @NgModule({
     declarations: [
@@ -67,7 +69,8 @@ import { EntrarComponent } from './usuario/entrar/entrar.component';
         ModalNavbarMobileComponent,
         ModalComponent,
         MenuUsuarioOpcoesComponent,
-        SvgLojaComponent
+        SvgLojaComponent,
+        GraficosComponent
     ],
     imports: [
         BrowserModule,
@@ -78,7 +81,8 @@ import { EntrarComponent } from './usuario/entrar/entrar.component';
         ToastrModule.forRoot({ enableHtml: true, positionClass: 'toast-top-right' }),
         LoadingBarModule,
         DragScrollModule,
-        FontAwesomeModule
+        FontAwesomeModule,
+        AgChartsAngularModule
     ],
     providers: [UsuarioContext], // https://stackoverflow.com/questions/36158848/how-can-i-declare-a-global-variable-in-angular-2-typescript
     bootstrap: [AppComponent]
