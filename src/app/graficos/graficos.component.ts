@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AgChartOptions } from 'ag-charts-community';
-import { getAgChartsAngularModuleDataMock } from 'src/utils/mock/agChartsAngularModuleDataMock';
+import { getAgChartsAngularModuleDataMock, propriedadesAgChartsAngularModuleDataMock } from 'src/utils/mock/agChartsAngularModuleDataMock';
 
 // Tutorial: https://www.ag-grid.com/angular-charts/gallery/simple-bar/
 @Component({
@@ -35,8 +35,8 @@ export class GraficosComponent implements OnInit {
             series: [
                 {
                     type: 'bar',
-                    xKey: 'type',
-                    yKey: 'earnings',
+                    xKey: propriedadesAgChartsAngularModuleDataMock.tipo,
+                    yKey: propriedadesAgChartsAngularModuleDataMock.ganhos,
                 },
             ],
             axes: [
