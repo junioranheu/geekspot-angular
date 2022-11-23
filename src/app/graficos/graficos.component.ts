@@ -11,9 +11,9 @@ import { getAgChartsAngularModuleDataMock, propriedadesAgChartsAngularModuleData
 })
 export class GraficosComponent implements OnInit {
 
-    opcoesChart: AgChartOptions;
+    dadosChart: AgChartOptions;
     constructor() {
-        this.opcoesChart = {
+        this.dadosChart = {
             autoSize: true,
             data: getAgChartsAngularModuleDataMock(),
             theme: {

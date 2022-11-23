@@ -26,6 +26,10 @@ import { NavbarFiltroComponent } from '../components/navbar/outros/navbar-filtro
 import { NavbarSmallComponent } from '../components/navbar/outros/navbar-small/navbar-small.component';
 import { NavbarPadraoComponent } from '../components/navbar/padrao/navbar-padrao/navbar-padrao.component';
 import { BotaoComponent } from '../components/outros/botao/botao.component';
+import { TabWrapperComponent } from '../components/tabs/tab-wrapper/tab-wrapper.component';
+import { TabComponent } from '../components/tabs/tab/tab.component';
+
+// SVGs;
 import { SvgAjudaComponent } from '../components/svg/svg-ajuda/svg-ajuda.component';
 import { SvgHamburguerComponent } from '../components/svg/svg-hamburguer/svg-hamburguer.component';
 import { SvgLogoComponent } from '../components/svg/svg-logo/svg-logo.component';
@@ -37,12 +41,12 @@ import { SvgSetaUmComponent } from '../components/svg/svg-seta-um/svg-seta-um.co
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErroComponent } from './erro/erro.component';
+import { GraficosComponent } from './graficos/graficos.component';
 import { IndexComponent } from './index/index.component';
 import { ItemComponent } from './item/item.component';
 import { TelaIndisponivelComponent } from './tela-indisponivel/tela-indisponivel.component';
 import { CriarContaComponent } from './usuario/criar-conta/criar-conta.component';
 import { EntrarComponent } from './usuario/entrar/entrar.component';
-import { GraficosComponent } from './graficos/graficos.component';
 
 @NgModule({
     declarations: [
@@ -70,7 +74,9 @@ import { GraficosComponent } from './graficos/graficos.component';
         ModalComponent,
         MenuUsuarioOpcoesComponent,
         SvgLojaComponent,
-        GraficosComponent
+        GraficosComponent,
+        TabComponent,
+        TabWrapperComponent
     ],
     imports: [
         BrowserModule,

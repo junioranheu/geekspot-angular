@@ -1,5 +1,15 @@
 <section class="divMain paddingPadrao">
     <div class="divGrafico">
-        <ag-charts-angular [options]="opcoesChart"></ag-charts-angular>
+        <ag-charts-angular [options]="dadosChart"></ag-charts-angular>
     </div>
 </section>
+
+<app-tab-wrapper>
+    <app-tab [tabTitle]="'Tab 1'">
+        Tab 1 content
+    </app-tab>
+
+    <app-tab [tabTitle]="'Tab 2'">
+        Tab 2 content
+    </app-tab>
+</app-tab-wrapper>
