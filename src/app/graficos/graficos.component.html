@@ -1,15 +1,15 @@
-<section class="divMain paddingPadrao">
-    <div class="divGrafico">
-        <ag-charts-angular [options]="dadosChart"></ag-charts-angular>
-    </div>
+<section class="paddingPadrao">
+    <app-tab-wrapper>
+        <app-tab [tabTitle]="'Gráfico com dados mockados'">
+            <div class="divGrafico animate__animated animate__fadeIn">
+                <ag-charts-angular [options]="dadosChart"></ag-charts-angular>
+            </div>
+        </app-tab>
+
+        <app-tab [tabTitle]="'Gráfico com dados da API'">
+            <div class="animate__animated animate__fadeIn">
+                Tab 2 content
+            </div>
+        </app-tab>
+    </app-tab-wrapper>
 </section>
-
-<app-tab-wrapper>
-    <app-tab [tabTitle]="'Tab 1'">
-        Tab 1 content
-    </app-tab>
-
-    <app-tab [tabTitle]="'Tab 2'">
-        Tab 2 content
-    </app-tab>
-</app-tab-wrapper>

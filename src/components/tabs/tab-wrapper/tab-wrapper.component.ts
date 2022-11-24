@@ -18,11 +18,11 @@ export class TabWrapperComponent implements AfterContentInit {
 
         // if there is no active tab set, activate the first
         if (activeTabs?.length === 0) {
-            this.selectTab(this.tabs?.first);
+            this.selecionarTab(this.tabs?.first);
         }
     }
 
-    selectTab(tab: any) {
+    selecionarTab(tab: any) {
         // deactivate all tabs
         this.tabs?.toArray().forEach(tab => tab.active = false);
 

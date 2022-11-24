@@ -1,6 +1,21 @@
 .tab {
     padding-left: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     margin-bottom: 0;
     list-style: none;
-    border-bottom: 1px solid #ddd;
+    border-bottom: var(--border);
+
+    // background-color: red;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    li.active {
+        background-color: var(--cor-principal);
+        padding: 0.5rem;
+        border-radius: 5px;
+        color: var(--branco);
+        font-weight: 600;
+    }
 }

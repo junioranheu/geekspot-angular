@@ -1,33 +1,9 @@
-.divMain {
-    // background-color: red;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-
-    .divGrafico {
-        width: 60%;
-    }
-}
-
 /* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
 /* hi-res laptops and desktops */
-@media (max-width:1281px) {
-    .divMain {
-        .divGrafico {
-            width: 80%;
-        }
-    }
-}
+@media (max-width:1281px) {}
 
 /* big landscape tablets, laptops, and desktops */
-@media (max-width:1025px) {
-    .divMain {
-        .divGrafico {
-            width: 100%;
-        }
-    }
-}
+@media (max-width:1025px) {}
 
 /* tablet, landscape iPad, lo-res laptops ands desktops */
 @media (max-width:801px) {}
