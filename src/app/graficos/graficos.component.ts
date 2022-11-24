@@ -78,7 +78,7 @@ export class GraficosComponent implements OnInit {
                                 strokeWidth: 0,
                                 fill: 'rgba(154, 107, 255, 1)',
                             },
-                        },
+                        },   
                     },
                 },
                 title: {
@@ -111,6 +111,13 @@ export class GraficosComponent implements OnInit {
                 ],
                 legend: {
                     enabled: true,
+                    position: 'top',
+                    item: {
+                        label: {
+                            color: 'rgba(154, 107, 255, 1)',
+                            fontWeight: '600',                         
+                        },                
+                    },       
                 },
             };
         }
