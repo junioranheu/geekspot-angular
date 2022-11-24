@@ -2,13 +2,13 @@
     <app-tab-wrapper>
         <app-tab [tabTitle]="'Gráfico com dados mockados'">
             <div class="divGrafico animate__animated animate__fadeIn">
-                <ag-charts-angular [options]="dadosChart"></ag-charts-angular>
+                <ag-charts-angular [options]="dadosChartMockado"></ag-charts-angular>
             </div>
         </app-tab>
 
         <app-tab [tabTitle]="'Gráfico com dados da API'">
             <div class="animate__animated animate__fadeIn">
-                Tab 2 content
+                <ag-charts-angular *ngIf="dadosChartAPI" [options]="dadosChartAPI"></ag-charts-angular>
             </div>
         </app-tab>
     </app-tab-wrapper>
