@@ -1,10 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { firstValueFrom } from 'rxjs';
-
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { ToastrService } from 'ngx-toastr';
+import { firstValueFrom } from 'rxjs';
 import { Auth, UsuarioContext } from 'src/utils/context/usuarioContext';
 import { environment } from 'src/utils/environments/environment';
 import iContextDadosUsuario from 'src/utils/interfaces/contextDadosUsuario';
@@ -32,86 +31,56 @@ export class Fetch implements OnInit {
         this.usuarioContext.isAuthObservable.subscribe(ia => this.isAuth = ia);
     }
 
-    public async getApi(url: string, isTentarRefreshToken: boolean = true) {
+    public async handleRequest(verboHTTP: string, url: string, body: string | any | null, isTentarRefreshToken: boolean = true): Promise<[any, number]> {
+        this.loadingBar.start();
+
         const token = Auth?.get()?.token ?? '';
-        let respostaJson;
-
-        const headers = new HttpHeaders()
-            .set('Authorization', `Bearer ${token}`)
-            .set('Content-Type', 'application/json');
-
+        let respostaJson: any, status: number = 200;
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`).set('Content-Type', 'application/json');
         try {
-            respostaJson = await firstValueFrom(this.http.get(url, { headers }));
-        } catch (erro: any) {
-            const e = {
-                'url': url,
-                'token': token,
-                'erro': erro.message,
-                'data': horarioBrasilia().format('YYYY-MM-DD HH:mm:ss')
-            }
-
-            console.log(e);
-            if (!environment.production) {
-                this.toastr.error('Houve uma falha na requisição ao servidor!', '');
-            }
-
-            // Se o usuário tem um token e foi erro 401, chame o end-point de refresh token;
-            respostaJson = await this.refreshToken(token, erro.message, VERBOS_HTTP.GET, url, null, isTentarRefreshToken);
-        }
-
-        return respostaJson;
-    }
-
-    public async postApi(url: string, body: string | any | null, isTentarRefreshToken: boolean = true) {
-        const respostaJson = await this.conteudoPostPutDelete(VERBOS_HTTP.POST, url, body, isTentarRefreshToken);
-        return respostaJson;
-    }
-
-    public async putApi(url: string, body: string | any | null, isTentarRefreshToken: boolean = true) {
-        const respostaJson = await this.conteudoPostPutDelete(VERBOS_HTTP.PUT, url, body, isTentarRefreshToken);
-        return respostaJson;
-    }
-
-    public async deleteApi(url: string, body: string | any | null, isTentarRefreshToken: boolean = true) {
-        const respostaJson = await this.conteudoPostPutDelete(VERBOS_HTTP.DELETE, url, body, isTentarRefreshToken);
-        return respostaJson;
-    }
-
-    public async conteudoPostPutDelete(verboHTTP: string, url: string, body: string | any | null, isTentarRefreshToken: boolean = true) {
-        const token = Auth?.get()?.token ?? '';
-        let respostaJson;
-
-        const headers = new HttpHeaders()
-            .set('Authorization', `Bearer ${token}`)
-            .set('Content-Type', 'application/json');
-
-        try {
-            if (verboHTTP === VERBOS_HTTP.POST) {
+            if (verboHTTP === VERBOS_HTTP.GET) {
+                respostaJson = await firstValueFrom(this.http.get(url, { headers }));
+            } else if (verboHTTP === VERBOS_HTTP.POST) {
                 respostaJson = await firstValueFrom(this.http.post(url, JSON.stringify(body), { headers }));
             } else if (verboHTTP === VERBOS_HTTP.PUT) {
                 respostaJson = await firstValueFrom(this.http.put(url, JSON.stringify(body), { headers }));
             } else if (verboHTTP === VERBOS_HTTP.DELETE) {
                 respostaJson = await firstValueFrom(this.http.delete(url, { headers }));
             }
+
+            try {
+                if (respostaJson.code) {
+                    status = respostaJson.code;
+                }
+            } catch (erro: any) { }
         } catch (erro: any) {
-            const e = {
-                'url': url,
-                'body': body,
-                'token': token,
-                'erro': erro.message,
-                'data': horarioBrasilia().format('YYYY-MM-DD HH:mm:ss')
-            }
-
-            console.table(e);
-            if (!environment.production) {
-                this.toastr.error('Houve uma falha na requisição ao servidor!', '');
-            }
-
-            // Se o usuário tem um token e foi erro 401, chame o end-point de refresh token;
-            respostaJson = await this.refreshToken(token, erro.message, verboHTTP, url, body, isTentarRefreshToken);
+            return this.handleCatch(erro, url, body, token, verboHTTP, isTentarRefreshToken);
         }
 
-        return respostaJson;
+        this.loadingBar.complete();
+
+        // console.log(respostaJson, status);
+        return [respostaJson, status];
+    }
+
+    private async handleCatch(erro: any, url: string, body: string, token: string, verboHTTP: string, isTentarRefreshToken: boolean): Promise<[any, number]> {
+        this.loadingBar.complete();
+        let respostaJson = erro.error;
+        const status = erro.status;
+
+        const e = {
+            url: url,
+            body: body,
+            token: token,
+            erro: erro.message,
+            data: horarioBrasilia().format('YYYY-MM-DD HH:mm:ss'),
+        };
+
+        console.table(e);
+
+        respostaJson = await this.refreshToken(token, erro.message, verboHTTP, url, body, isTentarRefreshToken);
+
+        return [respostaJson, status];
     }
 
     private async refreshToken(token: string, erro: any, verboHTTP: string, url: string | null, body: string | null, isTentarRefreshToken: boolean): Promise<any> {
@@ -123,7 +92,7 @@ export class Fetch implements OnInit {
             };
 
             // Fazer requisição para o end-point de refresh token
-            const respostaRefreshToken = await this.postApi(urlRefreshToken, dto);
+            const respostaRefreshToken = await this.handleRequest(verboHTTP, urlRefreshToken, dto, false) as any;
             if (!respostaRefreshToken || respostaRefreshToken?.erro) {
                 console.log(respostaRefreshToken?.mensagemErro ?? 'Houve um erro ao gerar o refresh token');
                 this.deslogarUsuarioRefreshTokenInvalido();
@@ -150,16 +119,8 @@ export class Fetch implements OnInit {
 
             if (url) {
                 try {
-                    if (verboHTTP === VERBOS_HTTP.GET) {
-                        respostaJson = await this.getApi(url, false);
-                    } else if (verboHTTP === VERBOS_HTTP.POST) {
-                        respostaJson = await this.postApi(url, body, false);
-                    } else if (verboHTTP === VERBOS_HTTP.PUT) {
-                        respostaJson = await this.putApi(url, body, false);
-                    } else if (verboHTTP === VERBOS_HTTP.DELETE) {
-                        respostaJson = await this.deleteApi(url, body, false);
-                    }
-                } catch (error) {
+                    respostaJson = await this.handleRequest(verboHTTP, url, VERBOS_HTTP.GET ? null : body, false);
+                } catch (error: any) {
                     this.deslogarUsuarioRefreshTokenInvalido();
                     return false;
                 }
@@ -180,5 +141,4 @@ export class Fetch implements OnInit {
             this.loadingBar.complete();
         });
     }
-
 }

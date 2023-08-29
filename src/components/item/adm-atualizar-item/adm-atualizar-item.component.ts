@@ -1,11 +1,11 @@
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { LoadingBarService } from '@ngx-loading-bar/core';
-
 import { ToastrService } from 'ngx-toastr';
+import CONSTS_ITENS from 'src/utils/consts/data/constItens';
 import { Auth } from 'src/utils/context/usuarioContext';
 import iItem from 'src/utils/interfaces/item';
-import { ItemService } from 'src/utils/services/item.service';
+import { GenericService } from 'src/utils/services/generic.service';
 
 @Component({
     selector: 'app-adm-atualizar-item',
@@ -18,7 +18,7 @@ export class AdmAtualizarItemComponent implements OnInit, OnChanges {
         private titleService: Title,
         private toastr: ToastrService,
         private loadingBar: LoadingBarService,
-        private itemService: ItemService,
+        private itemService: GenericService<iItem>,
     ) { }
 
     @Input() item?: iItem | null | undefined;
@@ -72,9 +72,10 @@ export class AdmAtualizarItemComponent implements OnInit, OnChanges {
             precoDesconto: this.precoDesconto
         } as unknown as iItem;
 
-        const resposta = await this.itemService.atualizarItem(dto) as unknown as iItem;
-        if (!resposta || resposta?.erro) {
-            this.toastr.error(resposta?.mensagemErro ?? 'Algo deu errado! Houve algum problema internamente', '');
+        const [dados, status] = await this.itemService.atualizar(CONSTS_ITENS.API_URL_PUT_ATUALIZAR, dto) as [any, number];
+
+        if (!dados || dados?.erro) {
+            this.toastr.error(dados?.mensagemErro ?? 'Algo deu errado! Houve algum problema internamente', '');
             this.loadingBar.complete();
             return false;
         }

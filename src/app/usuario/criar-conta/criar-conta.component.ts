@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-
 import { LoadingBarService } from '@ngx-loading-bar/core';
+import { ToastrService } from 'ngx-toastr';
+import CONSTS_AUTENTICAR from 'src/utils/consts/data/constAutenticar';
 import CONSTS_TELAS from 'src/utils/consts/outros/telas';
 import { Auth, UsuarioContext } from 'src/utils/context/usuarioContext';
 import iContextDadosUsuario from 'src/utils/interfaces/contextDadosUsuario';
@@ -12,7 +12,7 @@ import gerarImagemPerfilRandom from 'src/utils/outros/gerarImagemPerfilRandom';
 import horarioBrasilia from 'src/utils/outros/horarioBrasilia';
 import padronizarNomeCompletoUsuario from 'src/utils/outros/padronizarNomeCompletoUsuario';
 import validarDadosCriarConta from 'src/utils/outros/validarDadosCriarConta';
-import { AutenticarService } from 'src/utils/services/autenticar.service';
+import { GenericService } from 'src/utils/services/generic.service';
 
 @Component({
     selector: 'app-criar-conta',
@@ -23,7 +23,7 @@ export class CriarContaComponent implements OnInit {
 
     constructor(
         private toastr: ToastrService,
-        private autenticarService: AutenticarService,
+        private autenticarService: GenericService<iUsuario>,
         private router: Router,
         private usuarioContext: UsuarioContext,
         private loadingBar: LoadingBarService
@@ -92,21 +92,22 @@ export class CriarContaComponent implements OnInit {
             IsVerificado: false
         } as unknown as iUsuario;
 
-        const resposta = await this.autenticarService.postCriarConta(dto) as unknown as iUsuario;
-        if (!resposta || resposta?.erro) {
+        const [dados, status] = await this.autenticarService.criar(CONSTS_AUTENTICAR.API_URL_POST_REGISTRAR, dto) as [any, number];
+
+        if (!dados || dados?.erro) {
             this.senha = '';
             this.inputUsuario?.nativeElement.focus();
-            this.toastr.error(resposta?.mensagemErro ?? 'Parece que ocorreu um erro interno. Tente novamente mais tarde', '');
+            this.toastr.error(dados?.mensagemErro ?? 'Parece que ocorreu um erro interno. Tente novamente mais tarde', '');
             this.loadingBar.complete();
             return false;
         }
 
         this.router.navigate([CONSTS_TELAS.INDEX]).then(() => {
-            resposta.cep = '';
-            Auth.set(resposta as unknown as iContextDadosUsuario);
+            dados.cep = '';
+            Auth.set(dados as unknown as iContextDadosUsuario);
             this.usuarioContext._behaviorIsAuth.next(true);
 
-            if (resposta.isEmailVerificacaoContaEnviado) {
+            if (dados.isEmailVerificacaoContaEnviado) {
                 this.toastr.success('Um e-mail de verificação de conta foi enviado para você 👽', '');
             }
 

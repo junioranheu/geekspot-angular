@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import CONST_ITENS from 'src/utils/consts/data/constItens';
 import CONSTS_UPLOAD from 'src/utils/consts/data/constUpload';
 import iItem from 'src/utils/interfaces/item';
-import { ItemService } from 'src/utils/services/item.service';
+import { GenericService } from 'src/utils/services/generic.service';
 
 @Component({
     selector: 'app-item',
@@ -12,7 +12,7 @@ import { ItemService } from 'src/utils/services/item.service';
 })
 export class ItemComponent implements OnInit {
 
-    constructor(private route: ActivatedRoute, private itemService: ItemService) { }
+    constructor(private route: ActivatedRoute, private itemService: GenericService<iItem>) { }
 
     urlAtual = '';
     ngOnInit(): void {
@@ -24,7 +24,8 @@ export class ItemComponent implements OnInit {
         const id = Number(this.route.snapshot.paramMap.get('id'));
         // console.log(id);
 
-        this.item = await this.itemService.getItem(id);
+        const [dados, status] = await this.itemService.obter(`${CONST_ITENS.API_URL_GET_BY_ID}/${id}`) as [iItem, number];
+        this.item = dados;
         // console.log(this.item);
     }
 

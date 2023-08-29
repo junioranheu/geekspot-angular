@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
 import { AgChartOptions } from 'ag-charts-community';
-import iItemAgrupadoByItemTipo, { propriedadesIItemAgrupadoByItemTipo } from 'src/utils/interfaces/itemAgrupadoByItemTipo';
+import CONST_ITENS from 'src/utils/consts/data/constItens';
+import iItem from 'src/utils/interfaces/item';
+import { propriedadesIItemAgrupadoByItemTipo } from 'src/utils/interfaces/itemAgrupadoByItemTipo';
 import { getAgChartsAngularModuleDataMock, propriedadesAgChartsAngularModuleDataMock } from 'src/utils/mock/agChartsAngularModuleDataMock';
-import { ItemService } from 'src/utils/services/item.service';
+import { GenericService } from 'src/utils/services/generic.service';
 
 // Tutorial: https://www.ag-grid.com/angular-charts/gallery/simple-bar/
 @Component({
@@ -14,7 +15,7 @@ import { ItemService } from 'src/utils/services/item.service';
 export class GraficosComponent implements OnInit {
 
     dadosChartMockado: AgChartOptions;
-    constructor(private itemService: ItemService) {
+    constructor(private itemService: GenericService<iItem>) {
         this.dadosChartMockado = {
             autoSize: true,
             data: getAgChartsAngularModuleDataMock(),
@@ -64,13 +65,13 @@ export class GraficosComponent implements OnInit {
 
     dadosChartAPI: AgChartOptions | undefined;
     async ngOnInit(): Promise<void> {
-        const listaItens = await this.itemService.getListaItensGroupByItemTipo() as iItemAgrupadoByItemTipo[];
-        // console.log(listaItens);
+        const [dados, status] = await this.itemService.listar(CONST_ITENS.API_URL_LISTA_ITENS_GROUP_BY_ITEM_TIPO) as [iItem[], number];
+        // console.log(dados);
 
-        if (listaItens) {
+        if (dados) {
             this.dadosChartAPI = {
                 autoSize: true,
-                data: listaItens,
+                data: dados,
                 theme: {
                     overrides: {
                         bar: {
@@ -78,7 +79,7 @@ export class GraficosComponent implements OnInit {
                                 strokeWidth: 0,
                                 fill: 'rgba(154, 107, 255, 1)',
                             },
-                        },   
+                        },
                     },
                 },
                 title: {
@@ -115,9 +116,9 @@ export class GraficosComponent implements OnInit {
                     item: {
                         label: {
                             color: 'rgba(154, 107, 255, 1)',
-                            fontWeight: '600',                         
-                        },                
-                    },       
+                            fontWeight: '600',
+                        },
+                    },
                 },
             };
         }

@@ -1,13 +1,13 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-
 import { LoadingBarService } from '@ngx-loading-bar/core';
+import { ToastrService } from 'ngx-toastr';
+import CONSTS_AUTENTICAR from 'src/utils/consts/data/constAutenticar';
 import CONSTS_TELAS from 'src/utils/consts/outros/telas';
 import { Auth, UsuarioContext } from 'src/utils/context/usuarioContext';
 import iContextDadosUsuario from 'src/utils/interfaces/contextDadosUsuario';
 import iUsuario from 'src/utils/interfaces/usuario';
-import { AutenticarService } from 'src/utils/services/autenticar.service';
+import { GenericService } from 'src/utils/services/generic.service';
 
 @Component({
     selector: 'app-entrar',
@@ -18,7 +18,7 @@ export class EntrarComponent implements OnInit {
 
     constructor(
         private toastr: ToastrService,
-        private autenticarService: AutenticarService,
+        private autenticarService: GenericService<iUsuario>,
         private router: Router,
         private usuarioContext: UsuarioContext,
         private loadingBar: LoadingBarService
@@ -54,18 +54,25 @@ export class EntrarComponent implements OnInit {
 
         this.loadingBar.start();
 
-        const resposta = await this.autenticarService.postLogin(this.nomeUsuario, this.senha) as unknown as iUsuario;
-        if (!resposta || resposta?.erro) {
+        const dto = {
+            email: this.nomeUsuario,
+            nomeUsuarioSistema: this.nomeUsuario,
+            senha: this.senha
+        };
+
+        const [dados, status] = await this.autenticarService.criar(CONSTS_AUTENTICAR.API_URL_POST_LOGIN, dto) as [any, number];
+
+        if (!dados || dados?.erro) {
             this.senha = '';
             this.inputUsuario?.nativeElement.focus();
-            this.toastr.error(resposta?.mensagemErro ?? 'Algo deu errado! Provavelmente o usuário e/ou a senha estão errados', '');
+            this.toastr.error(dados?.mensagemErro ?? 'Algo deu errado! Provavelmente o usuário e/ou a senha estão errados', '');
             this.loadingBar.complete();
             return false;
         }
 
         this.router.navigate([CONSTS_TELAS.INDEX]).then(() => {
-            resposta.cep = resposta?.usuariosInformacoes?.cep ?? '';
-            Auth.set(resposta as unknown as iContextDadosUsuario);
+            dados.cep = dados?.usuariosInformacoes?.cep ?? '';
+            Auth.set(dados as unknown as iContextDadosUsuario);
             this.usuarioContext._behaviorIsAuth.next(true);
             this.loadingBar.complete();
         });
