@@ -1,43 +1,18 @@
-import { environment } from 'src/utils/environments/environment';
-import { API_BASE_URL_DEV, API_BASE_URL_PROD } from '../../consts/api/urlApi';
+import env from 'src/utils/outros/env';
 
-const ENDPOINTS = {
-    GET_TODOS: 'api/Itens/todos',
-    GET_BY_ID: 'api/Itens',
-    POST_ADICIONAR: 'api/Itens/adicionar',
-    PUT_ATUALIZAR: 'api/Itens/atualizar',
-    DELETE_DELETAR: 'api/Itens/deletar',
-    GET_BY_ITEM_TIPO_ID: 'api/Itens/byItemTipoId',
-    GET_BY_USUARIO_ID: 'api/Itens/byUsuarioId',
-    LISTA_ITENS_GROUP_BY_USUARIO: 'api/Itens/listaItensGroupByUsuario',
-    LISTA_ITENS_GROUP_BY_ITEM_TIPO: 'api/Itens/listaItensGroupByItemTipo'
+const base = env().api;
+const controller = 'api/Itens';
+
+const CONSTS_ITENS = {
+    API_URL_GET_TODOS: `${base}/${controller}/todos`,
+    API_URL_GET_BY_ID: `${base}/${controller}`,
+    API_URL_POST_ADICIONAR: `${base}/${controller}/adicionar`,
+    API_URL_PUT_ATUALIZAR: `${base}/${controller}/atualizar`,
+    API_URL_DELETE_DELETAR: `${base}/${controller}/deletar`,
+    API_URL_GET_BY_ITEM_TIPO_ID: `${base}/${controller}/byItemTipoId`,
+    API_URL_GET_BY_USUARIO_ID: `${base}/${controller}/byUsuarioId`,
+    API_URL_LISTA_ITENS_GROUP_BY_USUARIO: `${base}/${controller}/listaItensGroupByUsuario`,
+    API_URL_LISTA_ITENS_GROUP_BY_ITEM_TIPO: `${base}/${controller}/listaItensGroupByItemTipo`
 };
 
-const DEV = {
-    API_URL_GET_TODOS: `${API_BASE_URL_DEV}/${ENDPOINTS.GET_TODOS}`,
-    API_URL_GET_BY_ID: `${API_BASE_URL_DEV}/${ENDPOINTS.GET_BY_ID}`,
-    API_URL_POST_ADICIONAR: `${API_BASE_URL_DEV}/${ENDPOINTS.POST_ADICIONAR}`,
-    API_URL_PUT_ATUALIZAR: `${API_BASE_URL_DEV}/${ENDPOINTS.PUT_ATUALIZAR}`,
-    API_URL_DELETE_DELETAR: `${API_BASE_URL_DEV}/${ENDPOINTS.DELETE_DELETAR}`,
-    API_URL_GET_BY_ITEM_TIPO_ID: `${API_BASE_URL_DEV}/${ENDPOINTS.GET_BY_ITEM_TIPO_ID}`,
-    API_URL_GET_BY_USUARIO_ID: `${API_BASE_URL_DEV}/${ENDPOINTS.GET_BY_USUARIO_ID}`,
-    API_URL_LISTA_ITENS_GROUP_BY_USUARIO: `${API_BASE_URL_DEV}/${ENDPOINTS.LISTA_ITENS_GROUP_BY_USUARIO}`,
-    API_URL_LISTA_ITENS_GROUP_BY_ITEM_TIPO: `${API_BASE_URL_DEV}/${ENDPOINTS.LISTA_ITENS_GROUP_BY_ITEM_TIPO}`
-};
-
-const PROD = {
-    API_URL_GET_TODOS: `${API_BASE_URL_PROD}/${ENDPOINTS.GET_TODOS}`,
-    API_URL_GET_BY_ID: `${API_BASE_URL_PROD}/${ENDPOINTS.GET_BY_ID}`,
-    API_URL_POST_ADICIONAR: `${API_BASE_URL_PROD}/${ENDPOINTS.POST_ADICIONAR}`,
-    API_URL_PUT_ATUALIZAR: `${API_BASE_URL_PROD}/${ENDPOINTS.PUT_ATUALIZAR}`,
-    API_URL_DELETE_DELETAR: `${API_BASE_URL_PROD}/${ENDPOINTS.DELETE_DELETAR}`,
-    API_URL_GET_BY_ITEM_TIPO_ID: `${API_BASE_URL_PROD}/${ENDPOINTS.GET_BY_ITEM_TIPO_ID}`,
-    API_URL_GET_BY_USUARIO_ID: `${API_BASE_URL_PROD}/${ENDPOINTS.GET_BY_USUARIO_ID}`,
-    API_URL_LISTA_ITENS_GROUP_BY_USUARIO: `${API_BASE_URL_PROD}/${ENDPOINTS.LISTA_ITENS_GROUP_BY_USUARIO}`,
-    API_URL_LISTA_ITENS_GROUP_BY_ITEM_TIPO: `${API_BASE_URL_PROD}/${ENDPOINTS.LISTA_ITENS_GROUP_BY_ITEM_TIPO}`
-};
-
-// Definir se as constantes para a API é DEV ou PROD;
-const CONSTS = !environment.production ? DEV : PROD;
-
-export default CONSTS;
+export default CONSTS_ITENS;

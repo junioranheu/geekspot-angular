@@ -1,25 +1,12 @@
-import { environment } from 'src/utils/environments/environment';
-import { API_BASE_URL_DEV, API_BASE_URL_PROD } from '../../consts/api/urlApi';
+import env from 'src/utils/outros/env';
 
-const ENDPOINTS = {
-    POST_LOGIN: 'api/Autenticar/login',
-    POST_REGISTRAR: 'api/Autenticar/registrar',
-    POST_REFRESH_TOKEN: 'api/Autenticar/refreshToken'
+const base = env().api;
+const controller = 'api/Autenticar';
+
+const CONSTS_AUTENTICAR = {
+    API_URL_POST_LOGIN: `${base}/${controller}/login`,
+    API_URL_POST_REGISTRAR: `${base}/${controller}/registrar`,
+    API_URL_POST_REFRESH_TOKEN: `${base}/${controller}/refreshToken`
 };
 
-const DEV = {
-    API_URL_POST_LOGIN: `${API_BASE_URL_DEV}/${ENDPOINTS.POST_LOGIN}`,
-    API_URL_POST_REGISTRAR: `${API_BASE_URL_DEV}/${ENDPOINTS.POST_REGISTRAR}`,
-    API_URL_POST_REFRESH_TOKEN: `${API_BASE_URL_DEV}/${ENDPOINTS.POST_REFRESH_TOKEN}`
-};
-
-const PROD = {
-    API_URL_POST_LOGIN: `${API_BASE_URL_PROD}/${ENDPOINTS.POST_LOGIN}`,
-    API_URL_POST_REGISTRAR: `${API_BASE_URL_PROD}/${ENDPOINTS.POST_REGISTRAR}`,
-    API_URL_POST_REFRESH_TOKEN: `${API_BASE_URL_PROD}/${ENDPOINTS.POST_REFRESH_TOKEN}`
-};
-
-// Definir se as constantes para a API é DEV ou PROD;
-const CONSTS = !environment.production ? DEV : PROD;
-
-export default CONSTS;
+export default CONSTS_AUTENTICAR;

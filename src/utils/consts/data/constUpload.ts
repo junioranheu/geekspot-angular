@@ -1,28 +1,11 @@
-import { environment } from 'src/utils/environments/environment';
-import { API_BASE_URL_DEV, API_BASE_URL_PROD } from '../../consts/api/urlApi';
+import env from 'src/utils/outros/env';
 
-const ENDPOINTS = {
-    // "Não-protegido", arquivos da pasta Upload, que estão liberados;
-    GET_ITENS_IMAGENS: 'Upload/itens/imagem',
-    GET_USUARIOS_IMAGENS: 'Upload/usuarios/perfil/imagem',
-    GET_USUARIOS_LOJINHAS_CAPAS: 'Upload/usuarios/lojinha/imagem',
+const base = env().api;
 
-    // "Protegidos", arquivos que estão na pasta UploadProtegido e devem ser chamados pela API;
+const CONSTS_UPLOADS = {
+    API_URL_GET_ITENS_IMAGENS: `${base}/Upload/itens/imagem`,
+    API_URL_GET_USUARIOS_IMAGENS: `${base}/Upload/perfil/imagem`,
+    API_URL_GET_USUARIOS_LOJINHAS_CAPAS: `${base}/Upload/usuarios/lojinha/imagem`
 };
 
-const DEV = {
-    API_URL_GET_ITENS_IMAGENS: `${API_BASE_URL_DEV}/${ENDPOINTS.GET_ITENS_IMAGENS}`,
-    API_URL_GET_USUARIOS_IMAGENS: `${API_BASE_URL_DEV}/${ENDPOINTS.GET_USUARIOS_IMAGENS}`,
-    API_URL_GET_USUARIOS_LOJINHAS_CAPAS: `${API_BASE_URL_DEV}/${ENDPOINTS.GET_USUARIOS_LOJINHAS_CAPAS}`
-};
-
-const PROD = {
-    API_URL_GET_ITENS_IMAGENS: `${API_BASE_URL_PROD}/${ENDPOINTS.GET_ITENS_IMAGENS}`,
-    API_URL_GET_USUARIOS_IMAGENS: `${API_BASE_URL_PROD}/${ENDPOINTS.GET_USUARIOS_IMAGENS}`,
-    API_URL_GET_USUARIOS_LOJINHAS_CAPAS: `${API_BASE_URL_PROD}/${ENDPOINTS.GET_USUARIOS_LOJINHAS_CAPAS}`
-};
-
-// Definir se as constantes para a API é DEV ou PROD;
-const CONSTS = !environment.production ? DEV : PROD;
-
-export default CONSTS;
+export default CONSTS_UPLOADS;
