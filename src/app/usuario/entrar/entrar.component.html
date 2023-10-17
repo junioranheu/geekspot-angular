@@ -5,17 +5,19 @@
         <div class="divLogin margem1">
             <ng-container *ngIf="isExibirDivEmail">
                 <div class="animate__animated animate__fadeIn">
-                    <input class="input" type="text" placeholder="E-mail ou nome de usuário" autoComplete="off"
-                        [(ngModel)]="nomeUsuario" (keydown.enter)="handleEntrar()" #inputUsuario />
+                    <form [formGroup]="form">
+                        <input class="input" type="text" placeholder="E-mail ou nome de usuário" autoComplete="off"
+                            formControlName="nomeUsuario" (keydown.enter)="handleEntrar()" #inputUsuario />
 
-                    <input class="input margem0_5" type="password" placeholder="Senha" autoComplete="new-password"
-                        [(ngModel)]="senha" (keydown.enter)="handleEntrar()" #inputSenha />
+                        <input class="input margem0_5" type="password" placeholder="Senha" autoComplete="new-password"
+                            formControlName="senha" (keydown.enter)="handleEntrar()" #inputSenha />
 
-                    <div class="margem0_5">
-                        <app-botao [texto]="'Entrar'" [url]="null" [isNovaAba]="false" (handleFuncao)="handleEntrar()"
-                            [isEnabled]="true" [cor]="null" [corFonte]="null">
-                        </app-botao>
-                    </div>
+                        <div class="margem0_5">
+                            <app-botao [texto]="'Entrar'" [url]="null" [isNovaAba]="false"
+                                (handleFuncao)="handleEntrar()" [isEnabled]="true" [cor]="null" [corFonte]="null">
+                            </app-botao>
+                        </div>
+                    </form>
 
                     <div class="divOpcoesFlex margem0_5">
                         <span></span>

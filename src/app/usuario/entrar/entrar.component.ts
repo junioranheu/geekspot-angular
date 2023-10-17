@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { ToastrService } from 'ngx-toastr';
@@ -21,8 +22,20 @@ export class EntrarComponent implements OnInit {
         private autenticarService: GenericService<iUsuario>,
         private router: Router,
         private usuarioContext: UsuarioContext,
-        private loadingBar: LoadingBarService
-    ) { }
+        private loadingBar: LoadingBarService,
+        private formBuilder: FormBuilder
+    ) {
+        this.generateForm();
+    }
+
+    form!: FormGroup;
+
+    generateForm() {
+        this.form = this.formBuilder.group({
+            nomeUsuario: [null, [Validators.required]],
+            senha: [null, [Validators.required, Validators.minLength(3)]]
+        });
+    }
 
     isAuth: boolean | undefined;
     ngOnInit(): void {
@@ -36,17 +49,17 @@ export class EntrarComponent implements OnInit {
     urlCriarConta = CONSTS_TELAS.CRIAR_CONTA;
     isExibirDivEmail: boolean = false;
 
-    nomeUsuario?: string = '';
-    senha?: string = '';
-
     handleExibirDivEmail(): void {
         this.isExibirDivEmail = true;
     }
 
     @ViewChild('inputUsuario', { static: false }) inputUsuario: ElementRef | undefined;
     async handleEntrar(): Promise<boolean | void> {
-        if (!this.nomeUsuario || !this.senha) {
-            this.senha = '';
+        const { valid, value } = this.form;
+        // console.log(valid, value);
+
+        if (!value.nomeUsuario || !value.senha) {
+            value.senha = '';
             this.inputUsuario?.nativeElement.focus();
             this.toastr.error('O nome de usuário e/ou e-mail estão vazios!', '');
             return false;
@@ -55,15 +68,15 @@ export class EntrarComponent implements OnInit {
         this.loadingBar.start();
 
         const dto = {
-            email: this.nomeUsuario,
-            nomeUsuarioSistema: this.nomeUsuario,
-            senha: this.senha
+            email: value.nomeUsuario,
+            nomeUsuarioSistema: value.nomeUsuario,
+            senha: value.senha
         };
 
         const [dados, status] = await this.autenticarService.criar(CONSTS_AUTENTICAR.API_URL_POST_LOGIN, dto) as [any, number];
 
         if (!dados || dados?.erro) {
-            this.senha = '';
+            value.senha = '';
             this.inputUsuario?.nativeElement.focus();
             this.toastr.error(dados?.mensagemErro ?? 'Algo deu errado! Provavelmente o usuário e/ou a senha estão errados', '');
             this.loadingBar.complete();

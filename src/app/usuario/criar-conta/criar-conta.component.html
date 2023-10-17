@@ -5,27 +5,29 @@
         <div class="divLogin margem1">
             <ng-container *ngIf="isExibirDivEmail">
                 <div class="animate__animated animate__fadeIn">
-                    <input class="input" type="text" placeholder="Nome completo" autoComplete="off"
-                        [(ngModel)]="nomeCompleto" (keydown.enter)="handleCriarConta()" #inputNomeCompleto />
+                    <form [formGroup]="form">
+                        <input class="input" type="text" placeholder="Nome completo" autoComplete="off"
+                            formControlName="nomeCompleto" (keydown.enter)="handleCriarConta()" #inputNomeCompleto />
 
-                    <input class="input margem0_5" type="text" placeholder="Seu melhor e-mail" autoComplete="off"
-                        [(ngModel)]="email" (keydown.enter)="handleCriarConta()" #inputEmail />
+                        <input class="input margem0_5" type="text" placeholder="Seu melhor e-mail" autoComplete="off"
+                            formControlName="email" (keydown.enter)="handleCriarConta()" #inputEmail />
 
-                    <input class="input margem0_5" type="text" placeholder="Nome de usuário" autoComplete="off"
-                        [(ngModel)]="nomeUsuario" (keydown.enter)="handleCriarConta()" #inputUsuario />
+                        <input class="input margem0_5" type="text" placeholder="Nome de usuário" autoComplete="off"
+                            formControlName="nomeUsuario" (keydown.enter)="handleCriarConta()" #inputUsuario />
 
-                    <input class="input margem0_5" type="password" placeholder="Senha" autoComplete="new-password"
-                        [(ngModel)]="senha" (keydown.enter)="handleCriarConta()" #inputSenha />
+                        <input class="input margem0_5" type="password" placeholder="Senha" autoComplete="new-password"
+                            formControlName="senha" (keydown.enter)="handleCriarConta()" #inputSenha />
 
-                    <input class="input margem0_5" type="password" placeholder="Confirme sua senha"
-                        autoComplete="new-password" [(ngModel)]="confirmarSenha" (keydown.enter)="handleCriarConta()"
-                        #inputConfirmarSenha />
+                        <input class="input margem0_5" type="password" placeholder="Confirme sua senha"
+                            autoComplete="new-password" formControlName="confirmarSenha"
+                            (keydown.enter)="handleCriarConta()" #inputConfirmarSenha />
 
-                    <div class="margem0_5">
-                        <app-botao [texto]="'Criar conta'" [url]="null" [isNovaAba]="false"
-                            (handleFuncao)="handleCriarConta()" [isEnabled]="true" [cor]="null" [corFonte]="null">
-                        </app-botao>
-                    </div>
+                        <div class="margem0_5">
+                            <app-botao [texto]="'Criar conta'" [url]="null" [isNovaAba]="false"
+                                (handleFuncao)="handleCriarConta()" [isEnabled]="true" [cor]="null" [corFonte]="null">
+                            </app-botao>
+                        </div>
+                    </form>
                 </div>
             </ng-container>
 

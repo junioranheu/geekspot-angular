@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { ToastrService } from 'ngx-toastr';
@@ -26,8 +27,23 @@ export class CriarContaComponent implements OnInit {
         private autenticarService: GenericService<iUsuario>,
         private router: Router,
         private usuarioContext: UsuarioContext,
-        private loadingBar: LoadingBarService
-    ) { }
+        private loadingBar: LoadingBarService,
+        private formBuilder: FormBuilder
+    ) {
+        this.generateForm();
+    }
+
+    form!: FormGroup;
+
+    generateForm() {
+        this.form = this.formBuilder.group({
+            nomeCompleto: [null, [Validators.required]],
+            email: [null, [Validators.email, Validators.required]],
+            nomeUsuario: [null, [Validators.required]],
+            senha: [null, [Validators.required, Validators.minLength(3)]],
+            confirmarSenha: [null, [Validators.required, Validators.minLength(3)]]
+        });
+    }
 
     isAuth: boolean | undefined;
     imagemPerfilRandomInicialBase6?: string;
@@ -49,12 +65,6 @@ export class CriarContaComponent implements OnInit {
     urlEntrar = CONSTS_TELAS.ENTRAR;
     isExibirDivEmail: boolean = false;
 
-    nomeCompleto?: string = '';
-    email?: string = '';
-    nomeUsuario?: string = '';
-    senha?: string = '';
-    confirmarSenha?: string = '';
-
     handleExibirDivEmail(): void {
         this.isExibirDivEmail = true;
     }
@@ -66,9 +76,11 @@ export class CriarContaComponent implements OnInit {
     @ViewChild('inputConfirmarSenha', { static: false }) inputConfirmarSenha: ElementRef | undefined;
     async handleCriarConta(): Promise<boolean | void> {
         this.loadingBar.start();
+        const { valid, value } = this.form;
+        // console.log(valid, value);
 
         const isTrocouSenha = true;
-        let mensagemErroValidarDados = validarDadosCriarConta(this.nomeCompleto, this.email, this.nomeUsuario, this.senha, this.confirmarSenha, this.inputNomeCompleto, this.inputEmail, this.inputUsuario, this.inputSenha, isTrocouSenha);
+        let mensagemErroValidarDados = validarDadosCriarConta(value.nomeCompleto, value.email, value.nomeUsuario, value.senha, value.confirmarSenha, this.inputNomeCompleto, this.inputEmail, this.inputUsuario, this.inputSenha, isTrocouSenha);
         if (mensagemErroValidarDados) {
             this.toastr.error(mensagemErroValidarDados, '');
             this.loadingBar.complete();
@@ -76,14 +88,14 @@ export class CriarContaComponent implements OnInit {
         }
 
         // Atribuir o nome formatado para a variavel nome, novamente;
-        this.nomeCompleto = padronizarNomeCompletoUsuario(this.nomeCompleto ?? '');
+        value.nomeCompleto = padronizarNomeCompletoUsuario(value.nomeCompleto ?? '');
 
         // Criar conta;
         const dto = {
-            nomeCompleto: this.nomeCompleto,
-            email: this.email,
-            nomeUsuarioSistema: this.nomeUsuario,
-            senha: this.senha,
+            nomeCompleto: value.nomeCompleto,
+            email: value.email,
+            nomeUsuarioSistema: value.nomeUsuario,
+            senha: value.senha,
             usuarioTipoId: 2, // Usuário comum;
             dataCriacao: horarioBrasilia().format('YYYY-MM-DD HH:mm:ss'),
             foto: this.imagemPerfilRandomInicialBase6,
@@ -95,7 +107,7 @@ export class CriarContaComponent implements OnInit {
         const [dados, status] = await this.autenticarService.criar(CONSTS_AUTENTICAR.API_URL_POST_REGISTRAR, dto) as [any, number];
 
         if (!dados || dados?.erro) {
-            this.senha = '';
+            value.senha = '';
             this.inputUsuario?.nativeElement.focus();
             this.toastr.error(dados?.mensagemErro ?? 'Parece que ocorreu um erro interno. Tente novamente mais tarde', '');
             this.loadingBar.complete();
