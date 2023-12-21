@@ -5,7 +5,8 @@ const CONSTS_TELAS = {
     ERRO: 'erro',
     ITEM: 'item',
     INDISPONIVEL: 'tela-indisponivel',
-    GRAFICOS: 'graficos'
+    GRAFICOS: 'graficos',
+    EXEMPLO_TABELA: 'exemplo-tabela'
 };
 
 export default CONSTS_TELAS;

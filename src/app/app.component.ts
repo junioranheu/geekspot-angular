@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
 
     handleScrollTop() {
         document.body.scrollTop = document.documentElement.scrollTop = 0;
-        // console.clear();
+        console.clear();
     }
 
 }

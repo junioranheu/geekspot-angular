@@ -1,0 +1,17 @@
+<!-- <div *ngIf="dataSource" class="content-filter" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+    <table style="background-color: #effeef;" mat-table [dataSource]="dataSource" class="mat-elevation-z8" fxFlex="100">
+        <ng-container style="width: 100%;" *ngFor="let col of displayedColumns; let i = index"
+            [matColumnDef]="col.backendName">
+            <th mat-header-cell *matHeaderCellDef class="center-header">
+                {{ obterDisplayName(col.backendName) }}
+            </th>
+
+            <td *matCellDef="let element" class="center-header custom-cell">
+                {{handleArredondarNumero(element[col.backendName])}}
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="backendColumnNames"></tr>
+        <tr mat-row *matRowDef="let row; columns: backendColumnNames"></tr>
+    </table>
+</div> -->

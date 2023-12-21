@@ -1,4 +1,4 @@
-import { Component, NgIterable, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import CONST_ITENS from 'src/utils/consts/data/constItens';
 import { Auth, UsuarioContext } from 'src/utils/context/usuarioContext';
 import iItem from 'src/utils/interfaces/item';
@@ -15,7 +15,7 @@ export class IndexComponent implements OnInit {
 
     isAuth: boolean | undefined;
     nomeUsuarioLogado?: string;
-    listaItens: iItem[] | null | undefined | NgIterable<any>;
+    listaItens: iItem[] | null | undefined;
 
     async ngOnInit(): Promise<void> {
         this.usuarioContext.isAuthObservable.subscribe(ia => this.isAuth = ia);
