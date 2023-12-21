@@ -16,9 +16,10 @@ export class IndexComponent implements OnInit {
     isAuth: boolean | undefined;
     nomeUsuarioLogado?: string;
     listaItens: iItem[] | null | undefined | NgIterable<any>;
+
     async ngOnInit(): Promise<void> {
         this.usuarioContext.isAuthObservable.subscribe(ia => this.isAuth = ia);
-        this.nomeUsuarioLogado = (this.isAuth ? Auth.get()?.nomeUsuarioSistema : '');
+        this.nomeUsuarioLogado = (this.isAuth ? Auth.get()?.nomeUsuarioSistema! : '');
 
         const [dados, status] = await this.itemService.listar(CONST_ITENS.API_URL_LISTA_ITENS_GROUP_BY_USUARIO) as [iItem[], number];
         this.listaItens = dados;

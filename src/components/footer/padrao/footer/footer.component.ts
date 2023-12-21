@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioContext } from 'src/utils/context/usuarioContext';
-
 import { faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import CONSTS_TELAS from 'src/utils/consts/outros/telas';
+import { UsuarioContext } from 'src/utils/context/usuarioContext';
 
 @Component({
     selector: 'app-footer',
@@ -27,7 +26,7 @@ export class FooterComponent implements OnInit {
         window.open('https://github.com/junioranheu', '_blank');
     }
 
-    handleRedirecionarIconeInstagram(){
+    handleRedirecionarIconeInstagram() {
         window.open('https://www.instagram.com/junioranheu/', '_blank');
     }
 

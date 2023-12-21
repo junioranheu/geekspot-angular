@@ -7,6 +7,7 @@ export default interface iUsuario {
     email: string;
     nomeUsuarioSistema: string;
     token: string | null;
+    refreshToken: string | null;
     usuarioTipoId: number;
     usuariosTipos: iUsuarioTipo;
     foto: string | null;

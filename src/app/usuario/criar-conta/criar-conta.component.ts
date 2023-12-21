@@ -6,7 +6,6 @@ import { ToastrService } from 'ngx-toastr';
 import CONSTS_AUTENTICAR from 'src/utils/consts/data/constAutenticar';
 import CONSTS_TELAS from 'src/utils/consts/outros/telas';
 import { Auth, UsuarioContext } from 'src/utils/context/usuarioContext';
-import iContextDadosUsuario from 'src/utils/interfaces/contextDadosUsuario';
 import iUsuario from 'src/utils/interfaces/usuario';
 import converterSrcImagemParaBase64 from 'src/utils/outros/converterSrcImagemParaBase64';
 import gerarImagemPerfilRandom from 'src/utils/outros/gerarImagemPerfilRandom';
@@ -104,7 +103,7 @@ export class CriarContaComponent implements OnInit {
             IsVerificado: false
         } as unknown as iUsuario;
 
-        const [dados, status] = await this.autenticarService.criar(CONSTS_AUTENTICAR.API_URL_POST_REGISTRAR, dto) as [any, number];
+        const [dados, status] = await this.autenticarService.criar(CONSTS_AUTENTICAR.API_URL_POST_REGISTRAR, dto) as [iUsuario, number];
 
         if (!dados || dados?.erro) {
             value.senha = '';
@@ -116,7 +115,7 @@ export class CriarContaComponent implements OnInit {
 
         this.router.navigate([CONSTS_TELAS.INDEX]).then(() => {
             dados.cep = '';
-            Auth.set(dados as unknown as iContextDadosUsuario);
+            Auth.set(dados);
             this.usuarioContext._behaviorIsAuth.next(true);
 
             if (dados.isEmailVerificacaoContaEnviado) {

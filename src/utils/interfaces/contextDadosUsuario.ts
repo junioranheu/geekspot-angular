@@ -8,6 +8,6 @@ export default interface iContextDadosUsuario {
     isVerificado: boolean | null;
     token: string | null;
     refreshToken: string | null;
-    dataAutenticacao: Date | null;
+    dataAutenticacao: Date | string | null;
     cep: string | null;
 }

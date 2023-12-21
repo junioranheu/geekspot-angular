@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import iUsuario from 'src/utils/interfaces/usuario';
 import iContextDadosUsuario from '../interfaces/contextDadosUsuario';
 import horarioBrasilia from '../outros/horarioBrasilia';
 
 const _item = 'auth';
 export const Auth = {
-    set(data: iContextDadosUsuario) {
+    set(data: iUsuario) {
         const dadosUsuario = {
             usuarioId: data.usuarioId,
             nomeCompleto: data.nomeCompleto,
@@ -18,7 +19,7 @@ export const Auth = {
             refreshToken: data.refreshToken,
             dataAutenticacao: horarioBrasilia().format('YYYY-MM-DD HH:mm:ss'),
             cep: data.cep
-        };
+        } as iContextDadosUsuario;
 
         let parsedData = JSON.stringify(dadosUsuario);
         localStorage.setItem(_item, parsedData);
@@ -32,7 +33,9 @@ export const Auth = {
                 return null;
             }
 
-            let dataJson = JSON.parse(data);
+            let dataJson = JSON.parse(data) as iContextDadosUsuario;
+            // console.log(dataJson);
+
             return dataJson;
         } else {
             return null;
@@ -45,18 +48,18 @@ export const Auth = {
 
     update(data: iContextDadosUsuario) {
         const dadosUsuario = {
-            usuarioId: (data.usuarioId ?? Auth.get().usuarioId),
-            nomeCompleto: (data.nomeCompleto ?? Auth.get().nomeCompleto),
-            nomeUsuarioSistema: (data.nomeUsuarioSistema ?? Auth.get().nomeUsuarioSistema),
-            email: (data.email ?? Auth.get().email),
-            usuarioTipoId: (data.usuarioTipoId ?? Auth.get().usuarioTipoId),
-            foto: (data.foto ?? Auth.get().foto),
-            isVerificado: (data.isVerificado ?? Auth.get().isVerificado),
-            token: (data.token ?? Auth.get().token),
-            refreshToken: (data.refreshToken ?? Auth.get().refreshToken),
-            dataAutenticacao: (data.dataAutenticacao ?? Auth.get().dataAutenticacao),
-            cep: (data.cep ?? Auth.get().cep)
-        };
+            usuarioId: (data.usuarioId ?? Auth.get()?.usuarioId),
+            nomeCompleto: (data.nomeCompleto ?? Auth.get()?.nomeCompleto),
+            nomeUsuarioSistema: (data.nomeUsuarioSistema ?? Auth.get()?.nomeUsuarioSistema),
+            email: (data.email ?? Auth.get()?.email),
+            usuarioTipoId: (data.usuarioTipoId ?? Auth.get()?.usuarioTipoId),
+            foto: (data.foto ?? Auth.get()?.foto),
+            isVerificado: (data.isVerificado ?? Auth.get()?.isVerificado),
+            token: (data.token ?? Auth.get()?.token),
+            refreshToken: (data.refreshToken ?? Auth.get()?.refreshToken),
+            dataAutenticacao: (data.dataAutenticacao ?? Auth.get()?.dataAutenticacao),
+            cep: (data.cep ?? Auth.get()?.cep)
+        } as iContextDadosUsuario;
 
         let parsedData = JSON.stringify(dadosUsuario);
         localStorage.setItem(_item, parsedData);

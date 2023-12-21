@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -6,14 +7,24 @@ import { Component, HostListener, OnInit } from '@angular/core';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
     title = 'GeekSpot — Angular';
 
     innerWidth?: number;
     isSmall: boolean = false;
     tamanhoSmall: number = 1025;
-    ngOnInit() {
+    isMobile: boolean = false;
+
+    constructor(private router: Router) {
+    }
+
+    ngOnInit(): void {
         this.innerWidth = window.innerWidth;
         this.isSmall = this.innerWidth <= 1025;
+
+        this.router.events.subscribe(() => {
+            this.isMobile = this.router.url.includes('mobile');
+        });
     }
 
     @HostListener('window:resize', ['$event'])
@@ -24,6 +35,7 @@ export class AppComponent implements OnInit {
 
     handleScrollTop() {
         document.body.scrollTop = document.documentElement.scrollTop = 0;
-        console.clear();
+        // console.clear();
     }
+
 }
