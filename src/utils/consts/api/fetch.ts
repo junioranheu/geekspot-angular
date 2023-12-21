@@ -27,6 +27,7 @@ export class Fetch implements OnInit {
     ) { }
 
     isAuth: boolean | undefined;
+
     ngOnInit(): void {
         this.usuarioContext.isAuthObservable.subscribe(ia => this.isAuth = ia);
     }
@@ -37,6 +38,7 @@ export class Fetch implements OnInit {
         const token = Auth?.get()?.token ?? '';
         let respostaJson: any, status: number = 200;
         const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`).set('Content-Type', 'application/json');
+
         try {
             if (verboHTTP === VERBOS_HTTP.GET) {
                 respostaJson = await firstValueFrom(this.http.get(url, { headers }));
@@ -49,17 +51,20 @@ export class Fetch implements OnInit {
             }
 
             try {
+                // console.log('respostaJson.code', respostaJson.code, url);
+
                 if (respostaJson.code) {
                     status = respostaJson.code;
                 }
             } catch (erro: any) { }
         } catch (erro: any) {
+            // console.log('erro', erro);
             return this.handleCatch(erro, url, body, token, verboHTTP, isTentarRefreshToken);
         }
 
         this.loadingBar.complete();
 
-        // console.log(respostaJson, status);
+        // console.log(':)', respostaJson, status);
         return [respostaJson, status];
     }
 

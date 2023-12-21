@@ -7,20 +7,19 @@
                 <div class="animate__animated animate__fadeIn">
                     <form [formGroup]="form">
                         <input class="input" type="text" placeholder="Nome completo" autoComplete="off"
-                            formControlName="nomeCompleto" (keydown.enter)="handleCriarConta()" #inputNomeCompleto />
+                            formControlName="nomeCompleto" #inputNomeCompleto />
 
                         <input class="input margem0_5" type="text" placeholder="Seu melhor e-mail" autoComplete="off"
-                            formControlName="email" (keydown.enter)="handleCriarConta()" #inputEmail />
+                            formControlName="email" #inputEmail />
 
                         <input class="input margem0_5" type="text" placeholder="Nome de usuário" autoComplete="off"
-                            formControlName="nomeUsuario" (keydown.enter)="handleCriarConta()" #inputUsuario />
+                            formControlName="nomeUsuario" #inputUsuario />
 
                         <input class="input margem0_5" type="password" placeholder="Senha" autoComplete="new-password"
-                            formControlName="senha" (keydown.enter)="handleCriarConta()" #inputSenha />
+                            formControlName="senha" #inputSenha />
 
                         <input class="input margem0_5" type="password" placeholder="Confirme sua senha"
-                            autoComplete="new-password" formControlName="confirmarSenha"
-                            (keydown.enter)="handleCriarConta()" #inputConfirmarSenha />
+                            autoComplete="new-password" formControlName="confirmarSenha" #inputConfirmarSenha />
 
                         <div class="margem0_5">
                             <app-botao [texto]="'Criar conta'" [url]="null" [isNovaAba]="false"

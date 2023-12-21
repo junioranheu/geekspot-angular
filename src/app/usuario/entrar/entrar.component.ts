@@ -73,7 +73,7 @@ export class EntrarComponent implements OnInit {
         };
 
         const [dados, status] = await this.autenticarService.criar(CONSTS_AUTENTICAR.API_URL_POST_LOGIN, dto) as [iUsuario, number];
-        console.log(dados, status);
+        // console.log(dados, status);
 
         if (!dados || dados?.erro) {
             value.senha = '';

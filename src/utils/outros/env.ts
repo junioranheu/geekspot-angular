@@ -15,7 +15,7 @@ export default function env() {
 
     let isDev: boolean = true;
     let ambiente: string = 'Localhost';
-    let api: string = 'https://geekspotapi.azurewebsites.net';
+    let api: string = 'https://geekspotapi.azurewebsites.net' // 'https://localhost:7287'; ;
 
     if (urlAtual === urlFrontDev) {
         isDev = false;

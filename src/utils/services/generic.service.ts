@@ -17,8 +17,8 @@ export class GenericService<T> {
         return await this.fetch.handleRequest(VERBOS_HTTP.GET, url, null) as [T[], number];
     }
 
-    async criar(url: string, dto: any): Promise<[T, number]> {
-        return await this.fetch.handleRequest(VERBOS_HTTP.POST, url, dto) as [T, number];
+    async criar(url: string, dto: any): Promise<[any, number]> {
+        return await this.fetch.handleRequest(VERBOS_HTTP.POST, url, dto) as [any, number];
     }
 
     async atualizar(url: string, dto: any): Promise<[number, number]> {

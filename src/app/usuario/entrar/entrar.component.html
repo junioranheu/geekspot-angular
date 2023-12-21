@@ -7,10 +7,10 @@
                 <div class="animate__animated animate__fadeIn">
                     <form [formGroup]="form">
                         <input class="input" type="text" placeholder="E-mail ou nome de usuário" autoComplete="off"
-                            formControlName="nomeUsuario" (keydown.enter)="handleEntrar()" #inputUsuario />
+                            formControlName="nomeUsuario" #inputUsuario />
 
                         <input class="input margem0_5" type="password" placeholder="Senha" autoComplete="new-password"
-                            formControlName="senha" (keydown.enter)="handleEntrar()" #inputSenha />
+                            formControlName="senha" #inputSenha />
 
                         <div class="margem0_5">
                             <app-botao [texto]="'Entrar'" [url]="null" [isNovaAba]="false"

@@ -6,7 +6,5 @@ Criar novo serviço:     ng generate service hero    (https://angular.io/tutoria
 Serviço assíncrono:     Observable  (https://angular.io/tutorial/toh-pt4#observable-data)
 Rotas:                  (https://angular.io/tutorial/toh-pt5)
 
-
 --
-ARRUMAR O PROBLEMA DE SINCRONIZAÇÃO DO CONTEXT;
 FAZER A TABELA TIPO DO PDP;
