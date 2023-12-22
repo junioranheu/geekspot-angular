@@ -14,31 +14,24 @@ export class ExemploTabelaComponent implements OnInit {
     constructor(private itemService: GenericService<iItem>) { }
 
     displayedColumns: { backendName: string, displayName: string }[] = [
-        { backendName: 'reservatorioPrincipalCota', displayName: 'Reservatório Principal - Cota' },
-        { backendName: 'reservatorioPrincipalArea', displayName: 'Reservatório Principal - Área' },
-        { backendName: 'reservatorioPrincipalVolume', displayName: 'Reservatório Principal - Volume' },
-        { backendName: 'reservatorioIntermediarioCota', displayName: 'Reservatório Intermediário - Cota' },
-        { backendName: 'reservatorioIntermediarioArea', displayName: 'Reservatório Intermediário - Área' },
-        { backendName: 'reservatorioIntermediarioVolume', displayName: 'Reservatório Intermediário - Volume' },
-        { backendName: 'cheBeloMonteCota', displayName: 'Che Belo Monte - Cota' },
-        { backendName: 'cheBeloMonteArea', displayName: 'Che Belo Monte - Área' },
-        { backendName: 'cheBeloMonteVolume', displayName: 'Che Belo Monte - Volume' }
+        { backendName: 'nome', displayName: 'Nome' },
+        { backendName: 'descricao', displayName: 'Descrição' },
+        { backendName: 'tamanho', displayName: 'Tamanho' },
+        { backendName: 'marca', displayName: 'Marca' },
+        { backendName: 'condicao', displayName: 'Condição' }
     ];
 
     backendColumnNames: string[] = this.displayedColumns.map(x => x.backendName);
-    dataSource: Promise<iItem[] | null> | unknown;
+    dataSource = new MatTableDataSource<iItem>();
 
     async ngOnInit(): Promise<void> {
         const [dados, status] = await this.itemService.listar(CONSTS_ITENS.API_URL_LISTA_ITENS_GROUP_BY_USUARIO) as [iItem[], number];
+        // console.log(dados);
 
         if (status === 200) {
-            this.dataSource = new MatTableDataSource(dados);
+            const merged = dados.flatMap(x => x) as iItem[];
+            this.dataSource = new MatTableDataSource(merged);
         }
-    }
-
-    obterDisplayName(displayedColumns: { backendName: string, displayName: string }[], backendName: string): string {
-        const column = displayedColumns.find(x => x.backendName === backendName);
-        return column ? column.displayName : backendName;
     }
 
 }

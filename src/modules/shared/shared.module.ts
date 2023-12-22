@@ -10,7 +10,8 @@ import { AgChartsAngularModule } from 'ag-charts-angular';
 import { DragScrollModule } from 'ngx-drag-scroll';
 import { ToastrModule } from 'ngx-toastr';
 
-// Context;
+// Modulos;
+import { MaterialModule } from '../material/material.module';
 
 // Svg;
 import { SvgAjudaComponent } from 'src/components/svg/svg-ajuda/svg-ajuda.component';
@@ -32,6 +33,7 @@ import { NavbarPadraoComponent } from 'src/components/navbar/padrao/navbar-padra
 import { BotaoComponent } from 'src/components/outros/botao/botao.component';
 
 const modules = [
+    MaterialModule,
     CommonModule,
     HttpClientModule,
     FormsModule,
