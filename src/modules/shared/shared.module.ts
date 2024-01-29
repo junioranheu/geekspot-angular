@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { AgChartsAngularModule } from 'ag-charts-angular';
 import { DragScrollModule } from 'ngx-drag-scroll';
@@ -43,7 +44,8 @@ const modules = [
     AgChartsAngularModule,
     DragScrollModule,
     RouterModule,
-    ToastrModule.forRoot({ enableHtml: true, positionClass: 'toast-top-right' })
+    ToastrModule.forRoot({ enableHtml: true, positionClass: 'toast-top-right' }),
+    NgSelectModule
 ] as any[];
 
 const components = [

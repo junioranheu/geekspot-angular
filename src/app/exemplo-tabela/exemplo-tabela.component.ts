@@ -4,6 +4,11 @@ import CONSTS_ITENS from 'src/utils/consts/data/constItens';
 import iItem from 'src/utils/interfaces/item';
 import { GenericService } from 'src/utils/services/generic.service';
 
+interface iTesteFilter {
+    id: number;
+    item: string;
+}
+
 @Component({
     selector: 'app-exemplo-tabela',
     templateUrl: './exemplo-tabela.component.html',
@@ -32,6 +37,27 @@ export class ExemploTabelaComponent implements OnInit {
             const merged = dados.flatMap(x => x) as iItem[];
             this.dataSource = new MatTableDataSource(merged);
         }
+    }
+
+    listaTesteFilter = [
+        { id: 1, item: 'TESTE #1' },
+        { id: 2, item: 'TESTE #2' },
+        { id: 3, item: 'TESTE #3' },
+        { id: 4, item: 'TESTE #4' }
+    ] as iTesteFilter[];
+
+    formTesteFilter?: number[];
+
+    handleSelectAllTeste() {
+        this.formTesteFilter = [];
+
+        this.listaTesteFilter.forEach((x: iTesteFilter) => {
+            this.formTesteFilter?.push(x.id);
+        });
+    }
+
+    handleClearAllTeste() {
+        this.formTesteFilter = [];
     }
 
 }

@@ -1,4 +1,20 @@
-<div *ngIf="dataSource">
+<section *ngIf="true" class="container_teste animate__animated animate__fadeIn">
+    <span class="texto">DropDown teste:</span>
+
+    <ng-select class="margem0_5" [items]="listaTesteFilter" bindLabel="item" bindValue="item" [multiple]="true"
+        [notFoundText]="'Nenhum registro encontrado'" [(ngModel)]="formTesteFilter">
+        <ng-template ng-header-tmp>
+            <div>
+                <button class="botao" (click)="handleSelectAllTeste()">Selecionar tudo</button>
+                <button class="botao margem0_5" (click)="handleClearAllTeste()">Limpar</button>
+            </div>
+        </ng-template>
+    </ng-select>
+</section>
+
+<hr />
+
+<section *ngIf="dataSource">
     <table mat-table [dataSource]="dataSource">
         <ng-container *ngFor="let col of displayedColumns; let i = index" [matColumnDef]="col.backendName">
             <th mat-header-cell *matHeaderCellDef>
@@ -13,4 +29,4 @@
         <tr mat-header-row *matHeaderRowDef="backendColumnNames"></tr>
         <tr mat-row *matRowDef="let row; columns: backendColumnNames"></tr>
     </table>
-</div>
+</section>

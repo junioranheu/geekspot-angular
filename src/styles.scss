@@ -95,7 +95,6 @@ img {
 .cor-principal {
     color: var(--cor-principal) !important;
     background: -webkit-linear-gradient(var(--cor-principal), var(--cor-principal-escura)) !important;
-    -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     opacity: 1 !important;
 }
@@ -475,6 +474,36 @@ ngx-loading-bar {
             color: var(--preto);
             opacity: 0.5;
             cursor: not-allowed;
+        }
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Dropdown/Select - @ng-select/ng-select =-=-=-=-=-=-=-=-=-=-= */
+.ng-select-container {
+    width: 100% !important;
+
+    min-height: 2rem !important;
+    height: fit-content !important;
+    max-height: 6rem !important;
+
+    padding: 1em 1rem !important;
+    color: var(--cinza) !important;
+    border: 1px var(--verde) !important;
+    box-shadow: 4px 4px 20px rgba(0, 88, 160, 0.12) !important;
+    border-radius: 0.4rem !important;
+}
+
+.ng-dropdown-panel {
+    z-index: 999999999999999 !important;
+    background-color: var(--branco) !important;
+    padding: 1rem !important;
+    box-shadow: 4px 4px 20px rgba(0, 88, 160, 0.12) !important;
+}
+
+.ng-input {
+    input {
+        &:disabled {
+            cursor: not-allowed !important;
         }
     }
 }

@@ -8,3 +8,12 @@ td {
 td {
     border: 1px solid #d6d6d6;
 }
+
+.container_teste {
+    // background-color: orange !important;
+    background-color: var(--branco);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    width: 100%;
+    height: fit-content;
+}
