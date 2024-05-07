@@ -6,6 +6,7 @@ const CONSTS_TELAS = {
     ITEM: 'item',
     INDISPONIVEL: 'tela-indisponivel',
     GRAFICOS: 'graficos',
+    GRAFICOS_APEX: 'graficos-apex',
     EXEMPLO_TABELA: 'exemplo-tabela'
 };
 

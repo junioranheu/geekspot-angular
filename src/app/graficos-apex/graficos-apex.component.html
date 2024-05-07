@@ -1,0 +1,17 @@
+<section class="paddingPadrao">
+    <app-tab-wrapper>
+        <app-tab [tabTitle]="'Gráficos Apex'">
+            <div *ngIf="chartOptions_mockado" class="animate__animated animate__fadeIn">
+                <apx-chart [series]="chartOptions_mockado.series!" [chart]="chartOptions_mockado.chart!"
+                    [xaxis]="chartOptions_mockado.xaxis!" [title]="chartOptions_mockado.title!">
+                </apx-chart>
+            </div>
+
+            <div *ngIf="chartOptions_api" class="animate__animated animate__fadeIn">
+                <apx-chart [series]="chartOptions_api.series!" [chart]="chartOptions_api.chart!"
+                    [xaxis]="chartOptions_api.xaxis!" [title]="chartOptions_api.title!">
+                </apx-chart>
+            </div>
+        </app-tab>
+    </app-tab-wrapper>
+</section>

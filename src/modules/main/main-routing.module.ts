@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErroComponent } from 'src/app/erro/erro.component';
 import { ExemploTabelaComponent } from 'src/app/exemplo-tabela/exemplo-tabela.component';
+import { GraficosApexComponent } from 'src/app/graficos-apex/graficos-apex.component';
 import { GraficosComponent } from 'src/app/graficos/graficos.component';
 import { IndexComponent } from 'src/app/index/index.component';
 import { ItemComponent } from 'src/app/item/item.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
     { path: CONSTS_TELAS.ERRO, component: ErroComponent, title: `Ops ${tituloPadrao}` },
     { path: CONSTS_TELAS.INDISPONIVEL, component: TelaIndisponivelComponent, title: `Ops ${tituloPadrao}` },
     { path: CONSTS_TELAS.GRAFICOS, component: GraficosComponent, title: `Gráficos ${tituloPadrao}` },
+    { path: CONSTS_TELAS.GRAFICOS_APEX, component: GraficosApexComponent, title: `Gráficos Apex ${tituloPadrao}` },
     { path: CONSTS_TELAS.EXEMPLO_TABELA, component: ExemploTabelaComponent, title: `Exemplo de tabela ${tituloPadrao}` },
 
     // URL com ID dinâmico: https://angular.io/tutorial/toh-pt5#delete-hero-details-from-heroescomponent

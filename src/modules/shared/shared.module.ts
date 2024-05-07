@@ -8,6 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { AgChartsAngularModule } from 'ag-charts-angular';
+import { NgApexchartsModule } from 'ng-apexcharts';
 import { DragScrollModule } from 'ngx-drag-scroll';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -45,7 +46,8 @@ const modules = [
     DragScrollModule,
     RouterModule,
     ToastrModule.forRoot({ enableHtml: true, positionClass: 'toast-top-right' }),
-    NgSelectModule
+    NgSelectModule,
+    NgApexchartsModule
 ] as any[];
 
 const components = [

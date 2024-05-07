@@ -14,6 +14,7 @@ import { TabComponent } from 'src/components/tabs/tab/tab.component';
 // Telas;
 import { ErroComponent } from 'src/app/erro/erro.component';
 import { ExemploTabelaComponent } from 'src/app/exemplo-tabela/exemplo-tabela.component';
+import { GraficosApexComponent } from 'src/app/graficos-apex/graficos-apex.component';
 import { GraficosComponent } from 'src/app/graficos/graficos.component';
 import { IndexComponent } from 'src/app/index/index.component';
 import { ItemComponent } from 'src/app/item/item.component';
@@ -34,7 +35,8 @@ import { EntrarComponent } from 'src/app/usuario/entrar/entrar.component';
         GraficosComponent,
         TabComponent,
         TabWrapperComponent,
-        ExemploTabelaComponent
+        ExemploTabelaComponent,
+        GraficosApexComponent
     ],
     imports: [
         SharedModule,
