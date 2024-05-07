@@ -18,7 +18,8 @@
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
                         "allowedCommonJsDependencies": [
-                            "moment-timezone"
+                            "moment-timezone",
+                            "apexcharts"
                         ],
                         "outputPath": "dist/geek-spot-angular",
                         "index": "src/index.html",
@@ -107,7 +108,7 @@
                             "src/assets/fonts/GTWalsheim/GTWalsheim.css",
                             "src/assets/fonts/NanumPenScript/NanumPenScript.css",
                             "node_modules/ngx-toastr/toastr.css",
-                            "node_modules/animate.css/animate.min.css"             
+                            "node_modules/animate.css/animate.min.css"
                         ],
                         "scripts": []
                     }
@@ -116,6 +117,6 @@
         }
     },
     "cli": {
-      "analytics": "52e59bc7-eea1-45ab-853e-04a4c985f2b9"
+        "analytics": "52e59bc7-eea1-45ab-853e-04a4c985f2b9"
     }
 }
