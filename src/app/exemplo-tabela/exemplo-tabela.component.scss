@@ -17,3 +17,10 @@ td {
     width: 100%;
     height: fit-content;
 }
+
+.checkboxes {
+    // background-color: orange;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem
+}

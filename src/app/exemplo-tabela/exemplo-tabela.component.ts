@@ -18,15 +18,15 @@ export class ExemploTabelaComponent implements OnInit {
 
     constructor(private itemService: GenericService<iItem>) { }
 
-    displayedColumns: { backendName: string, displayName: string }[] = [
-        { backendName: 'nome', displayName: 'Nome' },
-        { backendName: 'descricao', displayName: 'Descrição' },
-        { backendName: 'tamanho', displayName: 'Tamanho' },
-        { backendName: 'marca', displayName: 'Marca' },
-        { backendName: 'condicao', displayName: 'Condição' }
+    displayedColumns: { backendName: string, displayName: string, visible: boolean }[] = [
+        { backendName: 'nome', displayName: 'Nome', visible: true },
+        { backendName: 'descricao', displayName: 'Descrição', visible: true },
+        { backendName: 'tamanho', displayName: 'Tamanho', visible: true },
+        { backendName: 'marca', displayName: 'Marca', visible: true },
+        { backendName: 'condicao', displayName: 'Condição', visible: true }
     ];
 
-    backendColumnNames: string[] = this.displayedColumns.map(x => x.backendName);
+    backendColumnNames: string[] = this.handleFiltrarColunas();
     dataSource = new MatTableDataSource<iItem>();
 
     async ngOnInit(): Promise<void> {
@@ -58,6 +58,25 @@ export class ExemploTabelaComponent implements OnInit {
 
     handleClearAllTeste() {
         this.formTesteFilter = [];
+    }
+
+    handleFiltrarColunas(): string[] {
+        return this.displayedColumns.filter(x => x.visible).map(x => x.backendName);
+    }
+
+    handleToggleColumn(col: { backendName: string, displayName: string, visible: boolean }) {
+        const item = this.displayedColumns.find(x => x.backendName === col.backendName);
+
+        if (!item) {
+            return;
+        }
+
+        item.visible = col.visible;
+        this.handleUpdateDisplayedColumns();
+    }
+
+    handleUpdateDisplayedColumns() {
+        this.backendColumnNames = this.handleFiltrarColunas();
     }
 
 }

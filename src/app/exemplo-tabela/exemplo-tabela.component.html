@@ -15,6 +15,12 @@
 <hr />
 
 <section *ngIf="dataSource">
+    <div class="checkboxes">
+        <mat-checkbox *ngFor="let col of displayedColumns" [(ngModel)]="col.visible" (change)="handleToggleColumn(col)">
+            {{ col.displayName }}
+        </mat-checkbox>
+    </div>
+
     <table mat-table [dataSource]="dataSource">
         <ng-container *ngFor="let col of displayedColumns; let i = index" [matColumnDef]="col.backendName">
             <th mat-header-cell *matHeaderCellDef>
